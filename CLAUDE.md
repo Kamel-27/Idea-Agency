@@ -38,7 +38,7 @@ The site has two kinds of pages:
 
 ## Landing page rules (from the course, do not break)
 
-- The landing page has **one goal**: book the free diagnostic. No navigation menu, no other links out.
+- The landing page has **one goal**: book the free diagnostic. No navigation menu. The only links out are quiet ones: the logo and footer link to the home page (decision 11), WhatsApp and the privacy note.
 - **One CTA text** everywhere: "Book my free diagnostic". Repeated 3 to 5 times, sticky on mobile.
 - Mobile first. About 80% of Egyptian traffic is mobile. Tap targets 44px+, body text 16px+.
 - Speed: PageSpeed mobile over 80, hero image under 200KB in WebP, total page under 1.5MB.

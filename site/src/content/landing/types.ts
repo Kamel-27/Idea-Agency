@@ -67,6 +67,8 @@ export type ThankYouPageContent = {
 
 export type LandingChromeContent = {
   locale: Locale;
+  homeLabel: string;
+  homeHref: string;
   privacyLabel: string;
   privacyHref: string;
   whatsappLabel: string;

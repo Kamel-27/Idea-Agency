@@ -6,8 +6,9 @@ import Link from "next/link";
 import { WhatsAppButton } from "./WhatsAppButton";
 
 // The frame around every landing page.
-// Course rule: a landing page has ONE goal, so there is no menu and no links
-// out. The logo is not a link. The only exits are WhatsApp and the privacy note.
+// Course rule: a landing page has ONE goal, so there is no menu.
+// The only exits are quiet ones: the logo and a footer link to our website
+// (decision 11 in docs/decisions.md), WhatsApp and the privacy note.
 
 type LandingShellProps = {
   content: LandingChromeContent;
@@ -19,19 +20,26 @@ export function LandingShell({ content, children }: LandingShellProps) {
     <>
       <header className="border-b border-line bg-white">
         <Container className="flex h-17 items-center">
-          <Logo className="pt-2 text-[26px]" />
+          <Link href={content.homeHref} aria-label={content.homeLabel} className="pt-2">
+            <Logo className="text-[26px]" />
+          </Link>
         </Container>
       </header>
 
-      {/* Bottom padding leaves room for the sticky button on phones */}
-      <main className="pb-24 lg:pb-0">{children}</main>
+      <main>{children}</main>
 
-      <footer className="border-t border-line py-8 text-sm text-muted">
+      {/* Extra bottom padding on phones so the sticky button never covers the footer */}
+      <footer className="border-t border-line pt-8 pb-28 text-sm text-muted lg:pb-8">
         <Container className="flex flex-wrap justify-between gap-3">
           <span>&copy; {siteConfig.name}</span>
-          <Link href={content.privacyHref} className="underline underline-offset-2 hover:text-brand">
-            {content.privacyLabel}
-          </Link>
+          <div className="flex gap-5">
+            <Link href={content.homeHref} className="underline underline-offset-2 hover:text-brand">
+              {content.homeLabel}
+            </Link>
+            <Link href={content.privacyHref} className="underline underline-offset-2 hover:text-brand">
+              {content.privacyLabel}
+            </Link>
+          </div>
         </Container>
       </footer>
 
