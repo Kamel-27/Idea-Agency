@@ -21,7 +21,9 @@ export function LandingShell({ content, children }: LandingShellProps) {
   return (
     <>
       <header className="border-b border-line bg-white">
-        <Container className="flex h-17 items-center justify-between">
+        {/* dir="ltr": the header keeps the English layout on Arabic pages too
+            (logo on the left, language switch on the right). */}
+        <Container dir="ltr" className="flex h-17 items-center justify-between">
           <Link href={content.homeHref} aria-label={content.homeLabel} className="pt-2">
             <Logo className="text-[26px]" />
           </Link>
