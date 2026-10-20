@@ -40,9 +40,9 @@ How every part of the lead generation engine connects. The business rules (form 
 
 | Part | Tool | Job | Status |
 | --- | --- | --- | --- |
-| Website | Next.js in `site/` | Agency site + landing pages, captures UTMs | Home page done |
+| Website | Next.js in `site/` | Agency site + landing pages, captures UTMs | Home page and diagnostic pages (EN + AR) done |
 | CMS | Sanity | Teammates edit text, portfolios, landing pages | Planned, after Oct 30 |
-| Form | Tally or our own form | Collects the lead, sends it to Make | Open decision |
+| Form | Our own Next.js form | Collects the lead, sends it to Make through a Server Action | Done, waiting for the Make webhook |
 | Automation | Make.com | Runs the capture and follow-up flows | Planned |
 | AI | Claude API | Rates the challenge text, writes summary and replies | Planned |
 | CRM | Google Sheets | Single source of truth for leads | Planned |
@@ -55,25 +55,55 @@ How every part of the lead generation engine connects. The business rules (form 
 
 ```
 site/src/app
-├── (site)/          website pages, with header and footer
-│   ├── page.tsx     /            home
-│   ├── services/    /services    (coming)
-│   ├── work/        /work        portfolio (coming)
-│   ├── team/        /team        team profiles (coming)
-│   └── blog/        /blog        (later)
-└── (landing)/       ad landing pages, no menu, one goal (coming)
-    ├── diagnostic/  /diagnostic  free SME marketing diagnostic
-    └── thank-you/   /thank-you   after the form
+├── (en)/                     English, <html lang="en">
+│   ├── (site)/               website pages, with header and footer
+│   │   └── page.tsx          /            home
+│   └── (landing)/            ad landing pages, no menu, one goal
+│       ├── diagnostic/       /diagnostic  free SME marketing diagnostic
+│       ├── thank-you/        /thank-you   after the form
+│       └── privacy/          /privacy
+└── (ar)/                     Arabic, <html lang="ar" dir="rtl">
+    └── ar/(landing)/         /ar/diagnostic, /ar/thank-you, /ar/privacy
 ```
 
-Two groups, because the course rules differ: website pages have a menu, landing pages must not.
+Website pages have a menu, landing pages must not (course rule), so they use different layouts. Coming next: `/services`, `/work`, `/team`, `/blog`.
+
+## Lead payload sent to Make
+
+The form sends this JSON to the Make webhook (`MAKE_WEBHOOK_URL`):
+
+```json
+{
+  "name": "Sara Ahmed",
+  "phone": "+201012345678",
+  "business": "Sara's Boutique",
+  "email": "sara@example.com",
+  "industry": "retail",
+  "role": "owner",
+  "team_size": "5-49",
+  "spend": "over_20k",
+  "challenge": "My Instagram ads get likes but no sales.",
+  "timeline": "this_month",
+  "whatsapp_opt_in": true,
+  "utm_source": "meta",
+  "utm_medium": "cpc",
+  "utm_campaign": "leads_cairosme_2026-10",
+  "utm_content": "video_negation_v1",
+  "locale": "en",
+  "page": "/diagnostic",
+  "submitted_at": "2026-10-20T20:49:24.558Z",
+  "is_simulated": false
+}
+```
+
+Answer codes are the same in both languages. Missing UTMs arrive as `direct` (source) and `none` (the others). Make uses `locale` to reply in the lead's language.
 
 ## How a lead moves, step by step
 
 1. Someone clicks an ad. The link carries `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`.
-2. The landing page reads the UTMs from the URL and puts them in hidden form fields. Missing UTMs become `direct`.
-3. The visitor submits the form. GTM fires `Lead` (Meta) and `generate_lead` (GA4).
-4. The form sends the lead to the Make.com webhook.
+2. The landing page reads the UTMs from the URL when the form is sent. Missing UTMs become `direct`.
+3. Our server checks the lead again and sends it to the Make.com webhook.
+4. The page fires `generate_lead`, which GTM sends to GA4 (`generate_lead`) and Meta (`Lead`).
 5. Make cleans the phone number to `+20` format and checks the CRM for a duplicate.
 6. Make adds the rule score (90 points) and asks Claude for the challenge rating (10 points), a summary and the replies.
 7. Make saves the row, sends the Gmail reply, saves the wa.me link and alerts the team for Hot leads.

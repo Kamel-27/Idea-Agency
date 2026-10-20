@@ -42,12 +42,12 @@ The site has two kinds of pages:
 - **One CTA text** everywhere: "Book my free diagnostic". Repeated 3 to 5 times, sticky on mobile.
 - Mobile first. About 80% of Egyptian traffic is mobile. Tap targets 44px+, body text 16px+.
 - Speed: PageSpeed mobile over 80, hero image under 200KB in WebP, total page under 1.5MB.
-- Form is a **Tally** embed (free hidden fields + webhook). Pass `utm_source`, `utm_medium`, `utm_campaign`, `utm_content` from the page URL into Tally hidden fields. Missing UTMs save as `direct`.
-- Tracking through **Google Tag Manager**: GA4 + Meta Pixel. Events: `PageView`, `Lead` / GA4 `generate_lead` on submit, `Contact` on WhatsApp click, custom `form_step2`. Exact casing. Tally runs in an iframe, so listen for its submit message to fire `Lead`.
+- Form is **our own two-step form** (`site/src/components/landing/LeadForm.tsx`), sent to Make by a Server Action. It passes `utm_source`, `utm_medium`, `utm_campaign`, `utm_content` from the page URL. Missing UTMs save as `direct`.
+- Tracking through **Google Tag Manager**: GA4 + Meta Pixel. Events: `PageView`, `Lead` / GA4 `generate_lead` on submit, `Contact` on WhatsApp click, custom `form_step2`. Exact casing. The site pushes `form_step2`, `generate_lead` and `contact` to `dataLayer` (`site/src/lib/tracking/events.ts`); GTM maps them to GA4 and Meta.
 - WhatsApp button uses `https://wa.me/20XXXXXXXXXX?text=...` (number to be decided).
 - Consent banner before tags fire (Egypt PDPL).
 - **Never invent proof**: no fake testimonials, client logos, ratings or results. Only true claims.
-- If Arabic is used: `dir="rtl"`, fonts Cairo / Tajawal / IBM Plex Sans Arabic, separate page per language.
+- Every landing page exists in English and Arabic (`/ar/...`, `dir="rtl"`, Cairo font), one page per language, same design.
 
 ## Tech choices
 
@@ -59,9 +59,8 @@ The site has two kinds of pages:
 
 ## Open decisions (ask before assuming)
 
-- Page language: Arabic-first (Egyptian colloquial with marketing terms in English) or English
 - Final brand kit from the content teammate (current direction above is from the design concept)
-- Form: Tally embed (frozen spec) or our own Next.js form posting to Make
+- Team sign-off on: our own form (replaces Tally), email field in step 2, Claude instead of Gemini (see docs/decisions.md)
 - Hosting: Vercel Pro, Netlify or Railway (Vercel free plan does not allow commercial use)
 - WhatsApp number, agency email, domain
 - Real team photos and names for the trust section

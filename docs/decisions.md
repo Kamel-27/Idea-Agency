@@ -36,3 +36,18 @@ Every important choice, with the reason. Newest at the bottom. If a decision cha
 **Date:** Oct 20, 2026
 **Decision:** Build the diagnostic landing page, Make flows, CRM, tracking and dashboard before Oct 30. Sanity, portfolios and blog come after.
 **Why:** The graduation grade is about the lead generation system. The rest matters for the agency but not for the grade.
+
+## 8. Our own form instead of Tally
+**Date:** Oct 20, 2026
+**Decision:** The lead form is built in Next.js and sends leads to Make.com through a Server Action.
+**Why:** It matches the brand, works in Arabic and English, and has no iframe, so tracking `form_step2` and `generate_lead` is simple and reliable. The Make webhook address stays secret on the server. Changes the frozen spec, so the team must agree.
+
+## 9. Email added to step 2 of the form
+**Date:** Oct 20, 2026
+**Decision:** Step 2 asks for an email address.
+**Why:** Flow A sends an email reply and follow-ups, but the frozen form had no email field. Step 1 stays at 3 fields (name, WhatsApp, business), as the course recommends.
+
+## 10. English and Arabic landing pages from day one
+**Date:** Oct 20, 2026
+**Decision:** `/diagnostic` (English) and `/ar/diagnostic` (Arabic, right-to-left) share one design and differ only in their content files.
+**Why:** Cairo SME owners often prefer Arabic, while some ads may run in English. Each language gets its own page, as the course requires, and the CRM receives the same answer codes from both.
