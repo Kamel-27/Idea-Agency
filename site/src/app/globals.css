@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+/*
+  DESIGN TOKENS
+  The whole brand lives here. Tailwind turns every token into utility classes:
+    --color-brand   ->  bg-brand, text-brand, border-brand
+    --radius-card   ->  rounded-card
+    --shadow-card   ->  shadow-card
+  Change a value here and the whole site follows.
+*/
+@theme {
+  --color-brand: #ff2e93;
+  --color-brand-soft: #ffe3f0;
+  --color-brand-tint: #fff3f8;
+  --color-ink: #171717;
+  --color-muted: #5b5b66;
+  --color-line: #eeeef2;
+
+  --radius-card: 18px;
+  --shadow-card: 0 18px 40px rgb(23 23 23 / 0.08);
+  --shadow-brand: 0 10px 24px rgb(255 46 147 / 0.35);
+}
+
+/*
+  Fonts are loaded in app/layout.tsx with next/font, which exposes them as
+  CSS variables (--font-inter, ...). "inline" makes Tailwind read those
+  variables where they are used, so font-display / font-script just work.
+*/
+@theme inline {
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-outfit), var(--font-inter), sans-serif;
+  --font-script: var(--font-caveat), cursive;
+}
+
+@layer base {
+  body {
+    @apply bg-white font-sans text-base leading-relaxed text-ink antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display text-balance;
+  }
+}
