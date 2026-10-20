@@ -15,7 +15,7 @@ import type { Locale } from "@/content/landing/types";
 import { Logo } from "@/components/brand/Logo";
 
 /** How long the loading screen shows before the page changes. */
-const SWITCH_DELAY_MS = 3000;
+const SWITCH_DELAY_MS = 1500;
 
 // Each entry describes the OTHER language (the one we switch to).
 const switchTo: Record<Locale, { label: string; lang: string; dir: "ltr" | "rtl"; loading: string }> = {
