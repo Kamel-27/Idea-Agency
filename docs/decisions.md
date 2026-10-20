@@ -1,0 +1,38 @@
+# Decisions log
+
+Every important choice, with the reason. Newest at the bottom. If a decision changes, add a new entry instead of editing the old one.
+
+## 1. Build a real website, not a single HTML page
+**Date:** Oct 20, 2026
+**Decision:** The site is the agency's real website, with a landing page system inside it.
+**Why:** The agency is real and will launch. It needs service pages, a portfolio for each team member and a way to make new landing pages per offer. A single HTML page cannot grow into that.
+
+## 2. Next.js for the website
+**Date:** Oct 20, 2026
+**Decision:** Next.js 16 with React, TypeScript and Tailwind CSS.
+**Why:** It handles static marketing pages (fast, good for PageSpeed) and server code (form handling, CMS) in one project. Kamel already works with React. Astro was faster for pure static pages, but it needed more glue for CMS editing and forms.
+
+## 3. Sanity as the CMS
+**Date:** Oct 20, 2026
+**Decision:** Sanity, set up after the Oct 30 submission.
+**Why:** Sanity hosts the content, so there is no database or CMS server to run. Its editor is the easiest for non-coders. Payload gives stricter per-person permissions, but the team does not need that. Until Sanity is set up, text lives in `site/src/content/`, already shaped like Sanity documents.
+
+## 4. Landing pages built from blocks, Framer as the design lab
+**Date:** Oct 20, 2026
+**Decision:** Landing pages are built from ready sections with several design variants. New designs are tried in Framer first, then turned into new blocks.
+**Why:** Blocks keep every page on brand and connected to tracking and the CRM, and they enforce the course rules (one CTA, no menu, fast). Framer keeps design freedom for experiments.
+
+## 5. Claude API instead of Gemini (pending team agreement)
+**Date:** Oct 20, 2026
+**Decision:** Use the Claude API for lead rating, summaries and replies.
+**Why:** The Max plan includes $100 of API credits each month, enough for thousands of leads. Make.com has a built-in Claude module. The frozen spec says Gemini, so the team must agree first.
+
+## 6. Brand direction
+**Date:** Oct 20, 2026
+**Decision:** Hot pink `#FF2E93`, white and ink `#171717`. Outfit for headings, Inter for body, Caveat for handwriting. Wordmark logo with a 3-ray spark over the "a".
+**Why:** Bold, modern and confident, from the design concept the team liked. The final brand kit may refine it.
+
+## 7. Funnel first, portfolio later
+**Date:** Oct 20, 2026
+**Decision:** Build the diagnostic landing page, Make flows, CRM, tracking and dashboard before Oct 30. Sanity, portfolios and blog come after.
+**Why:** The graduation grade is about the lead generation system. The rest matters for the agency but not for the grade.
