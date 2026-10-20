@@ -74,5 +74,5 @@ Every important choice, with the reason. Newest at the bottom. If a decision cha
 
 ## 15. Arabic home page and a language switch in the website header
 **Date:** Oct 21, 2026
-**Decision:** The home page exists in Arabic at `/ar`, built from the same components as `/`. The website header has an English / العربية switch with the same 1.5 second loading screen as landing pages. The header keeps the English layout (logo on the left) in Arabic, while the Arabic menu items read right to left.
+**Decision:** The home page exists in Arabic at `/ar`, built from the same components as `/`. The website header has an English / العربية switch with a short (0.6 second) loading screen, like landing pages. The header keeps the English layout (logo on the left) in Arabic, while the Arabic menu items read right to left.
 **Why:** Visitors should be able to read the whole site in their language. The fixed header layout keeps the brand consistent across languages.
