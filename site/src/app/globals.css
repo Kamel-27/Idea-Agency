@@ -19,6 +19,15 @@
   --radius-card: 18px;
   --shadow-card: 0 18px 40px rgb(23 23 23 / 0.08);
   --shadow-brand: 0 10px 24px rgb(255 46 147 / 0.35);
+
+  /* animate-fade-in: used by the language switch loading screen */
+  --animate-fade-in: fade-in 0.2s ease-out;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+  }
 }
 
 /*

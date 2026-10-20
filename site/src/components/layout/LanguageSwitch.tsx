@@ -7,16 +7,22 @@
 // Client component because it needs the current URL and a loading state.
 // It keeps the query string, so the UTM tags from the ad are not lost.
 //
-// On click it shows a branded loading screen for SWITCH_DELAY_MS before
+// On click it fades in a branded loading screen for SWITCH_DELAY_MS before
 // opening the other language, so the switch feels calm instead of jumpy.
+//
+// The loading screen is rendered with a portal straight into <body>.
+// Why: the website header uses backdrop-blur, and a blurred parent traps any
+// "position: fixed" child inside it. Without the portal, the screen would
+// only cover the header instead of the whole page.
 
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { usePathname } from "next/navigation";
 import type { Locale } from "@/content/types";
 import { Logo } from "@/components/brand/Logo";
 
 /** How long the loading screen shows before the page changes. */
-const SWITCH_DELAY_MS = 1500;
+const SWITCH_DELAY_MS = 600;
 
 // Each entry describes the OTHER language (the one we switch to).
 const switchTo: Record<Locale, { label: string; lang: string; dir: "ltr" | "rtl"; loading: string }> = {
@@ -55,21 +61,23 @@ export function LanguageSwitch({ locale }: { locale: Locale }) {
         {other.label}
       </a>
 
-      {isSwitching && (
-        <div
-          role="status"
-          aria-live="polite"
-          className="fixed inset-0 z-50 grid place-items-center bg-white"
-        >
-          <div className="flex flex-col items-center gap-7">
-            <Logo className="text-[34px]" />
-            <span className="size-10 animate-spin rounded-full border-4 border-brand-soft border-t-brand" />
-            <p lang={other.lang} dir={other.dir} className="text-muted">
-              {other.loading}
-            </p>
-          </div>
-        </div>
-      )}
+      {isSwitching &&
+        createPortal(
+          <div
+            role="status"
+            aria-live="polite"
+            className="fixed inset-0 z-[100] grid animate-fade-in place-items-center bg-white"
+          >
+            <div className="flex flex-col items-center gap-7">
+              <Logo className="text-[34px]" />
+              <span className="size-10 animate-spin rounded-full border-4 border-brand-soft border-t-brand" />
+              <p lang={other.lang} dir={other.dir} className="text-muted">
+                {other.loading}
+              </p>
+            </div>
+          </div>,
+          document.body,
+        )}
     </>
   );
 }
