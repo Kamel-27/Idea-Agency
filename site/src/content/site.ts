@@ -9,6 +9,10 @@ export const siteConfig = {
     "A digital marketing and web agency in Cairo. Clear strategy, data-driven decisions and content that connects.",
   location: "Cairo, Egypt",
 
+  // WhatsApp number in international format without "+", e.g. "201012345678".
+  // Empty until the team picks the number: the WhatsApp buttons stay hidden.
+  whatsappNumber: "",
+
   nav: [
     { label: "Home", href: "/" },
     { label: "Services", href: "/services" },

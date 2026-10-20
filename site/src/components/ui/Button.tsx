@@ -29,7 +29,11 @@ export function Button({
       className={`inline-flex min-h-12 items-center gap-2.5 rounded-full px-6 font-display text-[17px] font-medium transition hover:-translate-y-0.5 ${variants[variant]} ${className}`}
     >
       {children}
-      {showArrow && <span aria-hidden="true">&rarr;</span>}
+      {showArrow && (
+        <span aria-hidden="true" className="inline-block rtl:rotate-180">
+          &rarr;
+        </span>
+      )}
     </Link>
   );
 }

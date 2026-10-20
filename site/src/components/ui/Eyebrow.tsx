@@ -2,6 +2,6 @@
 
 export function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-sm font-medium tracking-[4px] text-brand uppercase">{children}</p>
+    <p className="text-sm font-medium tracking-[4px] text-brand uppercase rtl:tracking-normal">{children}</p>
   );
 }

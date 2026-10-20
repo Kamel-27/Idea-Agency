@@ -5,7 +5,8 @@ import { Spark } from "./Spark";
 
 export function Logo({ className = "" }: { className?: string }) {
   return (
-    <span className={`inline-flex items-baseline gap-[0.32em] font-display leading-none ${className}`}>
+    // dir="ltr": the wordmark reads "Idea Agency" even on Arabic (right-to-left) pages.
+    <span dir="ltr" className={`inline-flex items-baseline gap-[0.32em] font-display leading-none ${className}`}>
       <span className="font-bold tracking-tight">
         Ide
         <span className="relative">

@@ -22,14 +22,15 @@
 }
 
 /*
-  Fonts are loaded in app/layout.tsx with next/font, which exposes them as
-  CSS variables (--font-inter, ...). "inline" makes Tailwind read those
-  variables where they are used, so font-display / font-script just work.
+  Fonts are loaded in lib/fonts.ts with next/font, which exposes them as
+  CSS variables. "inline" makes Tailwind read those variables where they
+  are used. The second value in var(a, b) is a fallback: Arabic pages have
+  no heading or handwriting font, so they use the body font (Cairo).
 */
 @theme inline {
-  --font-sans: var(--font-inter), system-ui, sans-serif;
-  --font-display: var(--font-outfit), var(--font-inter), sans-serif;
-  --font-script: var(--font-caveat), cursive;
+  --font-sans: var(--font-body), system-ui, sans-serif;
+  --font-display: var(--font-heading, var(--font-body)), sans-serif;
+  --font-script: var(--font-hand, var(--font-body)), cursive;
 }
 
 @layer base {
