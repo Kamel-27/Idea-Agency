@@ -43,6 +43,7 @@ export type DiagnosticPageContent = {
     eyebrow: string;
     headline: string;
     subheadline: string;
+    highlights: string[]; // 3 short points under the subheadline
     trustLine: string;
     planCard: { title: string; rows: string[]; footer: string };
   };

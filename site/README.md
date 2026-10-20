@@ -181,6 +181,6 @@ Fonts: **Outfit** for headings (`font-display`), **Inter** for body text (`font-
 ## What is next
 
 1. **Google Tag Manager + consent banner**: the events already go to `dataLayer`, GTM forwards them to GA4 and the Meta Pixel.
-2. **Make.com Flow A**: receive the webhook, score with Claude, save to Google Sheets, reply.
+2. **Make.com Flow A**: receive the webhook, score with Gemini, save to Google Sheets, reply.
 3. **Sanity CMS**: teammates edit text, profiles, projects and landing pages without code.
 4. **More website pages**: Services, Portfolio, Team, Contact. Menu links to them show the 404 page until they exist.
