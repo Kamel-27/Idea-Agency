@@ -1,0 +1,5 @@
+key,locale,subject,body
+fallback_reply,en,We got your request,"Hi {name}, thanks for requesting a free marketing diagnostic for {business}. We will message you on WhatsApp within one working day to book a 20-minute call. Idea Agency team"
+fallback_reply,ar,طلبك وصلنا,"أهلًا {name}، شكرًا إنك طلبت كشف تسويقي ببلاش لـ {business}. هنكلمك على واتساب خلال يوم عمل واحد عشان نحدد معاد Call لمدة 20 دقيقة. فريق Idea Agency"
+fallback_whatsapp,en,,"Hi {name}, this is Idea Agency. Thanks for requesting the free marketing diagnostic. When is a good time for a 20-minute call?"
+fallback_whatsapp,ar,,"أهلًا {name}، معاك Idea Agency. شكرًا إنك طلبت الكشف التسويقي اللي ببلاش. إمتى يناسبك نعمل Call لمدة 20 دقيقة؟"

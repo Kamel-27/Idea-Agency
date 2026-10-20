@@ -1,0 +1,5 @@
+key,value,notes
+team_alert_email,,Who gets the Hot lead alert
+hot_owner,,Name of the teammate who calls Hot leads
+booking_url,,Calendar booking link (optional)
+whatsapp_number,,Agency WhatsApp in international format without +

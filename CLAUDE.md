@@ -27,7 +27,7 @@ An Egyptian SME owner clicks our ad, lands on one page and requests a **free SME
 ```
 /site            the agency website (Next.js). Read site/README.md first
 /prototype       throwaway HTML design mockup, safe to delete
-/automation      (planned) Make.com blueprints, AI prompts, test cases
+/automation      Make.com build guides, Gemini prompt, CRM headers, test leads. Read automation/README.md
 /data            (planned) simulated leads generator + CSV (always labeled simulated)
 /docs            project context
 ```

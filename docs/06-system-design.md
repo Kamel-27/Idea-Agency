@@ -104,7 +104,7 @@ Answer codes are the same in both languages. Missing UTMs arrive as `direct` (so
 2. The landing page reads the UTMs from the URL when the form is sent. Missing UTMs become `direct`.
 3. Our server checks the lead again and sends it to the Make.com webhook.
 4. The page fires `generate_lead`, which GTM sends to GA4 (`generate_lead`) and Meta (`Lead`).
-5. Make cleans the phone number to `+20` format and checks the CRM for a duplicate.
+5. Make checks the phone number in a Make Data store (`Idea leads index`) to find duplicates. The website already cleaned the phone to `+20` format.
 6. Make adds the rule score (90 points) and asks Gemini for the challenge rating (10 points), a summary and the replies.
 7. Make saves the row, sends the Gmail reply, saves the wa.me link and alerts the team for Hot leads.
 8. Every day Flow B sends the Day 2 and Day 5 follow-ups to leads still at Contacted.

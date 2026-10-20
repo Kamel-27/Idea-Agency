@@ -1,0 +1,21 @@
+{
+  "name": "Mona Test",
+  "phone": "+201000000003",
+  "business": "Test Dental Clinic",
+  "email": "mona.test@example.com",
+  "industry": "health",
+  "role": "marketing_manager",
+  "team_size": "5-49",
+  "spend": "under_5k",
+  "challenge": "We post every day but our bookings did not grow this year.",
+  "timeline": "within_3_months",
+  "whatsapp_opt_in": true,
+  "utm_source": "linkedin",
+  "utm_medium": "social",
+  "utm_campaign": "leads_cairosme_2026-10",
+  "utm_content": "carousel_audit_v1",
+  "locale": "en",
+  "page": "/diagnostic",
+  "submitted_at": "2026-10-22T10:00:00.000Z",
+  "is_simulated": true
+}

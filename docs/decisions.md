@@ -76,3 +76,8 @@ Every important choice, with the reason. Newest at the bottom. If a decision cha
 **Date:** Oct 21, 2026
 **Decision:** The home page exists in Arabic at `/ar`, built from the same components as `/`. The website header has an English / العربية switch with a short (0.6 second) loading screen, like landing pages. The header keeps the English layout (logo on the left) in Arabic, while the Arabic menu items read right to left.
 **Why:** Visitors should be able to read the whole site in their language. The fixed header layout keeps the brand consistent across languages.
+
+## 16. Flow A design: Data store for duplicates, 6 extra CRM columns, one agency account
+**Date:** Oct 22, 2026
+**Decision:** Flow A finds duplicates with a Make Data store keyed by phone, not a Google Sheets search. The `Leads` tab adds `email`, `locale`, `page`, `wa_link`, `rule_score` and `ai_rating`. Make, the Google Sheet, Gmail and the Gemini key all belong to one agency Google account.
+**Why:** A Sheets search that finds nothing stops the Make route, so the new-lead path would never run; a Data store check always answers yes or no. The extra columns let us reply in the right language, track the landing page, hand the team a ready WhatsApp link, and show how each score was made (90 points rules, 10 points AI). One shared agency account means no project tool depends on a teammate's personal account.
