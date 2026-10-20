@@ -31,6 +31,8 @@ Copy `.env.example` to `.env.local`. Without `MAKE_WEBHOOK_URL`, the form still 
 | `/thank-you`, `/ar/thank-you` | After the form is sent |
 | `/privacy`, `/ar/privacy` | Privacy note for the form |
 
+Every landing page has an **English / العربية** switch in the header. It opens the same page in the other language and keeps the UTM tags.
+
 Test the UTM capture with a link like `/diagnostic?utm_source=meta&utm_medium=cpc&utm_campaign=leads_cairosme_2026-10&utm_content=video_negation_v1`.
 
 ## Folder map
@@ -144,7 +146,7 @@ The answer options (role, spend, ...) are sent as fixed codes like `over_20k`, n
 
 By default every component runs on the **server**: it becomes plain HTML, ships no JavaScript and loads fast.
 
-A file that starts with `"use client"` runs in the **browser** too. Only use it when the component needs the browser: clicks, state, the current URL. Client components here: `SiteNav` (mobile menu), `LeadForm` (the form), `WhatsAppButton` (click tracking).
+A file that starts with `"use client"` runs in the **browser** too. Only use it when the component needs the browser: clicks, state, the current URL. Client components here: `SiteNav` (mobile menu), `LeadForm` (the form), `WhatsAppButton` (click tracking), `LanguageSwitch` (needs the current URL).
 
 ## Common tasks
 
