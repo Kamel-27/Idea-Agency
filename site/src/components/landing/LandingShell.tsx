@@ -3,7 +3,7 @@ import { siteConfig } from "@/content/site";
 import { Logo } from "@/components/brand/Logo";
 import { Container } from "@/components/ui/Container";
 import Link from "next/link";
-import { LanguageSwitch } from "./LanguageSwitch";
+import { LanguageSwitch } from "@/components/layout/LanguageSwitch";
 import { WhatsAppButton } from "./WhatsAppButton";
 
 // The frame around every landing page.

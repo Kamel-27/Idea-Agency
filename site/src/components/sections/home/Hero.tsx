@@ -1,17 +1,16 @@
-import { homeContent } from "@/content/home";
+import type { HomeContent } from "@/content/types";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { HeroVisual } from "./HeroVisual";
 
-export function Hero() {
-  const { hero } = homeContent;
+export function Hero({ hero }: { hero: HomeContent["hero"] }) {
 
   return (
     <Container className="grid items-center gap-10 pt-12 pb-16 lg:grid-cols-[1.05fr_1fr] lg:pt-20 lg:pb-24">
       <div>
         <Eyebrow>{hero.eyebrow}</Eyebrow>
-        <h1 className="mt-4.5 mb-5.5 text-[clamp(40px,6vw,76px)] leading-[1.05] font-semibold tracking-[-1.5px]">
+        <h1 className="mt-4.5 mb-5.5 text-[clamp(40px,6vw,76px)] leading-[1.05] font-semibold tracking-[-1.5px] rtl:tracking-normal">
           {hero.titleLine1}
           <span className="block text-brand">{hero.titleLine2}</span>
         </h1>

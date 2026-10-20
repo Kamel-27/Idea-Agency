@@ -6,26 +6,26 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import type { NavLink } from "@/content/types";
+import type { SiteChrome } from "@/content/types";
 import { Button } from "@/components/ui/Button";
+import { LanguageSwitch } from "./LanguageSwitch";
 
-type SiteNavProps = {
-  links: NavLink[];
-  cta: NavLink;
-};
-
-export function SiteNav({ links, cta }: SiteNavProps) {
+export function SiteNav({ chrome }: { chrome: SiteChrome }) {
+  const { nav, primaryCta, locale } = chrome;
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
-  const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
+  // Home links ("/" and "/ar") are only active on the home page itself.
+  const isActive = (href: string) =>
+    href === chrome.homeHref ? pathname === href : pathname.startsWith(href);
 
   return (
     <>
-      {/* Desktop: links in the middle, button on the right */}
+      {/* Desktop: links in the middle */}
+      {/* The header stays left-to-right, but Arabic menu items read right-to-left */}
       <nav aria-label="Main" className="hidden lg:block">
-        <ul className="flex gap-9">
-          {links.map((link) => (
+        <ul dir={locale === "ar" ? "rtl" : "ltr"} className="flex gap-9">
+          {nav.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
@@ -39,29 +39,37 @@ export function SiteNav({ links, cta }: SiteNavProps) {
           ))}
         </ul>
       </nav>
-      <div className="hidden lg:block">
-        <Button href={cta.href} showArrow>
-          {cta.label}
-        </Button>
+
+      {/* Right side: language switch, button (desktop), menu button (mobile) */}
+      <div className="flex items-center gap-3">
+        <LanguageSwitch locale={locale} />
+        <div className="hidden lg:block">
+          <Button href={primaryCta.href} showArrow>
+            {primaryCta.label}
+          </Button>
+        </div>
+        <button
+          type="button"
+          className="grid size-11 place-items-center lg:hidden"
+          aria-label={isOpen ? chrome.closeMenu : chrome.openMenu}
+          aria-expanded={isOpen}
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" className="stroke-ink" strokeWidth="2" strokeLinecap="round">
+            {isOpen ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
+          </svg>
+        </button>
       </div>
 
-      {/* Mobile: menu button that opens a panel under the header */}
-      <button
-        type="button"
-        className="grid size-11 place-items-center lg:hidden"
-        aria-label={isOpen ? "Close menu" : "Open menu"}
-        aria-expanded={isOpen}
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" className="stroke-ink" strokeWidth="2" strokeLinecap="round">
-          {isOpen ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
-        </svg>
-      </button>
-
+      {/* Mobile: panel under the header, in the page's own text direction */}
       {isOpen && (
-        <nav aria-label="Mobile" className="absolute inset-x-0 top-full border-b border-line bg-white lg:hidden">
+        <nav
+          aria-label="Mobile"
+          dir={locale === "ar" ? "rtl" : "ltr"}
+          className="absolute inset-x-0 top-full border-b border-line bg-white lg:hidden"
+        >
           <ul className="px-6 pt-2 pb-6">
-            {links.map((link) => (
+            {nav.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
@@ -74,8 +82,8 @@ export function SiteNav({ links, cta }: SiteNavProps) {
             ))}
           </ul>
           <div className="px-6 pb-6">
-            <Button href={cta.href} showArrow className="w-full justify-center">
-              {cta.label}
+            <Button href={primaryCta.href} showArrow className="w-full justify-center">
+              {primaryCta.label}
             </Button>
           </div>
         </nav>

@@ -1,10 +1,12 @@
 import type { Industry, Role, SpendLevel, TeamSize, Timeline } from "@/lib/leads/fields";
 import type { FieldError, LeadField } from "@/lib/leads/validation";
 
+import type { Locale } from "@/content/types";
+
 // The shape of a landing page's text. English and Arabic files must both
 // match it, so TypeScript tells us if a translation is missing.
 
-export type Locale = "en" | "ar";
+export type { Locale };
 
 type Heading = {
   eyebrow: string;

@@ -19,7 +19,7 @@ export const landingChrome: Record<Locale, LandingChromeContent> = {
     privacyLabel: "سياسة الخصوصية",
     privacyHref: "/ar/privacy",
     whatsappLabel: "كلمنا على واتساب",
-    whatsappMessage: "أهلًا Idea Agency، حابب أعرف أكتر عن المراجعة التسويقية المجانية.",
+    whatsappMessage: "أهلًا Idea Agency، حابب أعرف أكتر عن الكشف التسويقي اللي ببلاش.",
   },
 };
 
@@ -42,8 +42,8 @@ export const thankYouContent: Record<Locale, ThankYouPageContent> = {
     locale: "ar",
     meta: { title: "شكرًا" },
     title: "شكرًا، طلبك وصلنا.",
-    body: "هنتواصل معاك على واتساب خلال يوم عمل واحد عشان نحدد معاد المكالمة (20 دقيقة).",
-    listTitle: "في المكالمة هنراجع مع بعض:",
+    body: "هنكلمك على واتساب خلال يوم عمل واحد عشان نحدد معاد الـ Call (20 دقيقة).",
+    listTitle: "في الـ Call هنبص سوا على:",
     list: [
       "إزاي البيزنس بتاعك بيجيب عملاء دلوقتي",
       "إيه اللي شغال وإيه اللي محتاج يتغير",

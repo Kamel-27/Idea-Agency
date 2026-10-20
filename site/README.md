@@ -26,12 +26,12 @@ Copy `.env.example` to `.env.local`. Without `MAKE_WEBHOOK_URL`, the form still 
 
 | URL | What |
 | --- | --- |
-| `/` | Home page |
+| `/`, `/ar` | Home page |
 | `/diagnostic`, `/ar/diagnostic` | Free diagnostic landing page (ads send people here) |
 | `/thank-you`, `/ar/thank-you` | After the form is sent |
 | `/privacy`, `/ar/privacy` | Privacy note for the form |
 
-Every landing page has an **English / العربية** switch in the header. It opens the same page in the other language and keeps the UTM tags.
+Every page has an **English / العربية** switch in the header. It shows a short loading screen, then opens the same page in the other language and keeps the UTM tags.
 
 Test the UTM capture with a link like `/diagnostic?utm_source=meta&utm_medium=cpc&utm_campaign=leads_cairosme_2026-10&utm_content=video_negation_v1`.
 
@@ -45,25 +45,28 @@ site/src
 │   ├── global-not-found.tsx      404 page
 │   ├── (en)/                     English pages
 │   │   ├── layout.tsx            <html lang="en">
-│   │   ├── (site)/               website pages, with header and footer
+│   │   ├── (site)/               website pages, with header and footer (home "/")
 │   │   └── (landing)/            landing pages: no menu, one goal
 │   │       ├── diagnostic/  thank-you/  privacy/
 │   └── (ar)/                     Arabic pages
 │       ├── layout.tsx            <html lang="ar" dir="rtl">
-│       └── ar/(landing)/         /ar/diagnostic, /ar/thank-you, /ar/privacy
+│       └── ar/
+│           ├── (site)/           /ar home page
+│           └── (landing)/        /ar/diagnostic, /ar/thank-you, /ar/privacy
 │
 ├── components/                   UI: how things look
 │   ├── ui/                       Button, Container, Eyebrow, SectionHeading
 │   ├── brand/                    Logo and Spark
 │   ├── icons/                    social media icons
 │   ├── forms/                    form controls: text, select, choice chips, checkbox
-│   ├── layout/                   website Header, SiteNav (menu), Footer
-│   ├── sections/home/            home page sections
+│   ├── layout/                   Header, SiteNav (menu), Footer, LanguageSwitch
+│   ├── sections/home/            HomePage and its sections
 │   └── landing/                  landing pages: shell, DiagnosticPage, LeadForm, ...
 │
 ├── content/                      TEXT: what things say
-│   ├── site.ts                   site name, menu, WhatsApp number
-│   ├── home.ts                   home page text
+│   ├── types.ts                  content shapes and the Locale type
+│   ├── site.ts                   site name, WhatsApp number, header menu per language
+│   ├── home.ts                   home page text, English and Arabic
 │   └── landing/                  landing page text
 │       ├── types.ts              the shape every translation must follow
 │       ├── diagnostic.en.ts      English diagnostic page
@@ -157,11 +160,11 @@ A file that starts with `"use client"` runs in the **browser** too. Only use it 
 **Set the WhatsApp number:** `whatsappNumber` in `content/site.ts`. The WhatsApp buttons appear once it is set.
 
 **Add a section to the home page:**
-1. Add its text to `content/home.ts`
-2. Create `components/sections/home/MySection.tsx` that reads it
-3. Add `<MySection />` in `app/(en)/(site)/page.tsx`
+1. Add its shape to `HomeContent` in `content/types.ts`, and its text in both languages in `content/home.ts`
+2. Create `components/sections/home/MySection.tsx` that takes the text as a prop
+3. Add `<MySection />` in `components/sections/home/HomePage.tsx`
 
-**Add a website page, e.g. `/services`:** create `app/(en)/(site)/services/page.tsx`. It gets the header and footer automatically.
+**Add a website page, e.g. `/services`:** create `app/(en)/(site)/services/page.tsx` and `app/(ar)/ar/(site)/services/page.tsx`. Both get the header and footer automatically.
 
 **Add a new landing page for another offer:** copy `content/landing/diagnostic.en.ts` with new text, then add a route under `app/(en)/(landing)/`. Reusable landing blocks come with Sanity.
 

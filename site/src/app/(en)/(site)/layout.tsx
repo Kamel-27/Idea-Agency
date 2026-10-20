@@ -1,15 +1,13 @@
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 
-// Layout for the normal website pages (home, services, work, team, blog).
-// "(site)" is a route group: the brackets keep it out of the URL.
-// Ad landing pages will live in a separate "(landing)" group with no menu,
-// because a landing page must have one goal and no links out.
+// English website pages (home, and later services, work, team, blog): header + footer.
+// Landing pages live in the (landing) group instead, with no menu.
 
-export default function SiteLayout({ children }: LayoutProps<"/">) {
+export default function EnglishSiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <Header />
+      <Header locale="en" />
       <main>{children}</main>
       <Footer />
     </>

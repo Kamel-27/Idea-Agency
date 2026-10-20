@@ -21,7 +21,7 @@ export function HeroVisual({ screenText }: { screenText: string[] }) {
         <div className="origin-left rounded-t-2xl rounded-b-sm bg-[#1d1d1f] p-3 shadow-[0_24px_50px_rgb(23_23_23/0.18)] [transform:perspective(1200px)_rotateY(-10deg)]">
           <div className="grid aspect-[16/10] place-items-center rounded-md bg-white p-5 text-center">
             <div>
-              <p className="-rotate-6 font-script text-[clamp(22px,2.4vw,34px)] leading-[1.1] text-brand">
+              <p dir="ltr" className="-rotate-6 font-script text-[clamp(22px,2.4vw,34px)] leading-[1.1] text-brand">
                 {screenText.map((line) => (
                   <span key={line} className="block">
                     {line}

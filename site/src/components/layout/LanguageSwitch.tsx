@@ -1,8 +1,9 @@
 "use client";
 
 // Switches between the English and Arabic version of the current page:
+//   /            <->  /ar
 //   /diagnostic  <->  /ar/diagnostic
-//   /thank-you   <->  /ar/thank-you
+// Used in the website header and on landing pages.
 // Client component because it needs the current URL and a loading state.
 // It keeps the query string, so the UTM tags from the ad are not lost.
 //
@@ -11,7 +12,7 @@
 
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import type { Locale } from "@/content/landing/types";
+import type { Locale } from "@/content/types";
 import { Logo } from "@/components/brand/Logo";
 
 /** How long the loading screen shows before the page changes. */
@@ -27,7 +28,7 @@ export function LanguageSwitch({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   const [isSwitching, setIsSwitching] = useState(false);
 
-  const target = locale === "en" ? `/ar${pathname}` : pathname.replace(/^\/ar(?=\/|$)/, "") || "/";
+  const target = otherLanguagePath(pathname, locale);
   const other = switchTo[locale];
 
   function handleClick(event: React.MouseEvent<HTMLAnchorElement>) {
@@ -71,4 +72,10 @@ export function LanguageSwitch({ locale }: { locale: Locale }) {
       )}
     </>
   );
+}
+
+/** "/" -> "/ar", "/diagnostic" -> "/ar/diagnostic", and back. */
+function otherLanguagePath(pathname: string, locale: Locale): string {
+  if (locale === "en") return pathname === "/" ? "/ar" : `/ar${pathname}`;
+  return pathname.replace(/^\/ar(?=\/|$)/, "") || "/";
 }
