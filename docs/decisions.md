@@ -51,3 +51,8 @@ Every important choice, with the reason. Newest at the bottom. If a decision cha
 **Date:** Oct 20, 2026
 **Decision:** `/diagnostic` (English) and `/ar/diagnostic` (Arabic, right-to-left) share one design and differ only in their content files.
 **Why:** Cairo SME owners often prefer Arabic, while some ads may run in English. Each language gets its own page, as the course requires, and the CRM receives the same answer codes from both.
+
+## 11. Logo and footer link back to the website on landing pages
+**Date:** Oct 21, 2026
+**Decision:** On landing pages, the logo and a footer link ("Visit our website") open the home page. There is still no menu.
+**Why:** Some visitors want to check who we are before they leave their details, and a real agency site builds trust. The two links are quiet (no button style), so the free diagnostic stays the only clear action. This is a small exception to the course's "no links out" rule; we track it and can remove it if it lowers conversions.

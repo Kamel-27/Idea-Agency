@@ -5,6 +5,8 @@ import type { LandingChromeContent, Locale, ThankYouPageContent } from "./types"
 export const landingChrome: Record<Locale, LandingChromeContent> = {
   en: {
     locale: "en",
+    homeLabel: "Visit our website",
+    homeHref: "/",
     privacyLabel: "Privacy note",
     privacyHref: "/privacy",
     whatsappLabel: "Chat on WhatsApp",
@@ -12,6 +14,8 @@ export const landingChrome: Record<Locale, LandingChromeContent> = {
   },
   ar: {
     locale: "ar",
+    homeLabel: "زور موقعنا",
+    homeHref: "/", // no Arabic website yet, so this opens the English home page
     privacyLabel: "سياسة الخصوصية",
     privacyHref: "/ar/privacy",
     whatsappLabel: "كلمنا على واتساب",
