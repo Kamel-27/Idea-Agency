@@ -9,7 +9,7 @@ export const diagnosticEn: DiagnosticPageContent = {
   meta: {
     title: "Free SME Marketing Diagnostic",
     description:
-      "A free 20-minute marketing diagnostic for Cairo businesses, with a 1-page action plan in 48 hours.",
+      "A free 20-minute marketing diagnostic for your business, with a 1-page action plan in 48 hours.",
   },
   cta: "Book my free diagnostic",
   links: { thankYou: "/thank-you", privacy: "/privacy" },
@@ -18,7 +18,7 @@ export const diagnosticEn: DiagnosticPageContent = {
     eyebrow: "Free SME marketing diagnostic",
     headline: "Find out which part of your marketing brings customers, before you spend another pound.",
     subheadline:
-      "A free 20-minute marketing diagnostic for Cairo businesses, with a 1-page action plan in 48 hours.",
+      "A free 20-minute marketing diagnostic for your business, with a 1-page action plan in 48 hours.",
     highlights: ["Free 20-minute call", "A clear 1-page plan", "Your plan within 48 hours"],
     trustLine: "Free, no obligation. The plan is yours to keep.",
     planCard: {

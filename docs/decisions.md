@@ -66,3 +66,13 @@ Every important choice, with the reason. Newest at the bottom. If a decision cha
 **Date:** Oct 21, 2026
 **Decision:** The Arabic landing page was rewritten, not translated. The offer is called «مراجعة تسويقية مجانية» and the Arabic CTA is «عايز أعرف إيه اللي شغال». The hero gets 3 short points (20-minute call, 1-page plan, 48 hours) in both languages.
 **Why:** The first Arabic draft read like English marketing copy in Egyptian words. The new copy speaks to the owner's real worry ("I spend on ads, but are they bringing customers?"), sells clarity instead of promises, and is honest that we are new. The CTA is in the owner's own voice; since it does not say "free", a "free, no obligation" line sits near the buttons.
+
+## 14. «كشف تسويقي ببلاش», more English words, no city names
+**Date:** Oct 21, 2026
+**Decision:** In Arabic the free offer is «كشف تسويقي ببلاش» (like a doctor's check-up), replacing «مراجعة تسويقية مجانية». Arabic copy mixes in the English marketing words owners really use (Ads, Plan, Budget, Strategy). No page mentions Cairo or Egypt.
+**Why:** «مراجعة تسويقية مجانية» was accurate but did not make people feel anything; «كشف» is instantly clear and matches the English "diagnostic". Egyptian business owners speak this mixed way. The offer works for any business, so naming a city only narrows it.
+
+## 15. Arabic home page and a language switch in the website header
+**Date:** Oct 21, 2026
+**Decision:** The home page exists in Arabic at `/ar`, built from the same components as `/`. The website header has an English / العربية switch with the same 1.5 second loading screen as landing pages. The header keeps the English layout (logo on the left) in Arabic, while the Arabic menu items read right to left.
+**Why:** Visitors should be able to read the whole site in their language. The fixed header layout keeps the brand consistent across languages.

@@ -1,16 +1,15 @@
-import { homeContent } from "@/content/home";
+import type { HomeContent } from "@/content/types";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 
-export function Services() {
-  const { services } = homeContent;
+export function Services({ services }: { services: HomeContent["services"] }) {
 
   return (
     <section id="services" className="bg-brand-tint py-16 lg:py-24">
       <Container>
         <div className="mb-12 max-w-[640px]">
           <Eyebrow>{services.eyebrow}</Eyebrow>
-          <h2 className="mt-3 text-[clamp(30px,4vw,44px)] leading-[1.15] font-semibold tracking-[-0.8px]">
+          <h2 className="mt-3 text-[clamp(30px,4vw,44px)] leading-[1.15] font-semibold tracking-[-0.8px] rtl:tracking-normal">
             {services.title}
           </h2>
         </div>

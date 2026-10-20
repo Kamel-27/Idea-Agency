@@ -1,11 +1,10 @@
-import { homeContent } from "@/content/home";
+import type { HomeContent } from "@/content/types";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 
 // Dark banner that sends visitors to the free diagnostic, our lead magnet.
 
-export function DiagnosticCta() {
-  const { diagnosticCta } = homeContent;
+export function DiagnosticCta({ diagnosticCta }: { diagnosticCta: HomeContent["diagnosticCta"] }) {
 
   return (
     <section className="py-16 lg:py-24">

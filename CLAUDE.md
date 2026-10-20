@@ -33,8 +33,9 @@ An Egyptian SME owner clicks our ad, lands on one page and requests a **free SME
 ```
 
 The site has two kinds of pages:
-- **Website pages** in `site/src/app/(site)/`: home, services, portfolio, team, blog. Normal menu.
-- **Landing pages** (planned) in `site/src/app/(landing)/`: one per ad offer, starting with the free diagnostic. The rules below apply to these.
+- **Website pages** in `site/src/app/(en)/(site)/` and `(ar)/ar/(site)/`: home (done), services, portfolio, team, blog. Normal menu.
+- **Landing pages** in `site/src/app/(en)/(landing)/` and `(ar)/ar/(landing)/`: one per ad offer, starting with the free diagnostic. The rules below apply to these.
+- Every page has an English / العربية switch in the header.
 
 ## Landing page rules (from the course, do not break)
 
@@ -48,7 +49,8 @@ The site has two kinds of pages:
 - Consent banner before tags fire (Egypt PDPL).
 - **Never invent proof**: no fake testimonials, client logos, ratings or results. Only true claims.
 - Every landing page exists in English and Arabic (`/ar/...`, `dir="rtl"`, Cairo font), one page per language, same design.
-- Arabic voice: natural Egyptian Arabic, written for the owner's real worry, not translated from English. Conversational headlines, clear and professional form and privacy text. In Arabic the offer is «مراجعة تسويقية مجانية».
+- Arabic voice: natural Egyptian Arabic with the English marketing words owners really use (Ads, Plan, Budget), written for the owner's real worry, not translated. Conversational headlines, clear and professional form and privacy text. In Arabic the offer is «كشف تسويقي ببلاش».
+- No city or country names in copy (no Cairo, no Egypt). The offer is for any business.
 
 ## Tech choices
 
