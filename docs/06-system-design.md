@@ -19,7 +19,7 @@ How every part of the lead generation engine connects. The business rules (form 
                         │              │
                         ▼              ▼
               ┌──────────────┐  ┌──────────────────┐
-              │  Claude API  │  │ Google Sheets CRM │
+              │  Gemini API  │  │ Google Sheets CRM │
               │ rate, summary│─>│  one row per lead │
               │ email, WA msg│  └────────┬─────────┘
               └──────────────┘           │
@@ -44,7 +44,7 @@ How every part of the lead generation engine connects. The business rules (form 
 | CMS | Sanity | Teammates edit text, portfolios, landing pages | Planned, after Oct 30 |
 | Form | Our own Next.js form | Collects the lead, sends it to Make through a Server Action | Done, waiting for the Make webhook |
 | Automation | Make.com | Runs the capture and follow-up flows | Planned |
-| AI | Claude API | Rates the challenge text, writes summary and replies | Planned |
+| AI | Gemini API (free tier) | Rates the challenge text, writes summary and replies | Planned |
 | CRM | Google Sheets | Single source of truth for leads | Planned |
 | Email | Gmail | Instant reply and follow-ups | Planned |
 | WhatsApp | wa.me links | AI writes the message, a teammate taps to send | Planned |
@@ -105,7 +105,7 @@ Answer codes are the same in both languages. Missing UTMs arrive as `direct` (so
 3. Our server checks the lead again and sends it to the Make.com webhook.
 4. The page fires `generate_lead`, which GTM sends to GA4 (`generate_lead`) and Meta (`Lead`).
 5. Make cleans the phone number to `+20` format and checks the CRM for a duplicate.
-6. Make adds the rule score (90 points) and asks Claude for the challenge rating (10 points), a summary and the replies.
+6. Make adds the rule score (90 points) and asks Gemini for the challenge rating (10 points), a summary and the replies.
 7. Make saves the row, sends the Gmail reply, saves the wa.me link and alerts the team for Hot leads.
 8. Every day Flow B sends the Day 2 and Day 5 follow-ups to leads still at Contacted.
 9. Looker Studio reads the sheet and shows the numbers.
@@ -114,7 +114,7 @@ Answer codes are the same in both languages. Missing UTMs arrive as `direct` (so
 
 | Secret | Where | Never |
 | --- | --- | --- |
-| Claude API key | Make.com connection, or `site/.env.local` | In the repo or a chat |
+| Gemini API key | Make.com connection only | In the repo or a chat |
 | Make webhook URL | `site/.env.local` | In client-side code if avoidable |
 | Sanity token | `site/.env.local` | In the repo |
 

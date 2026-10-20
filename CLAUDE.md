@@ -17,7 +17,7 @@ An Egyptian SME owner clicks our ad, lands on one page and requests a **free SME
 | `docs/03-system-spec.md` | Frozen spec: form fields, lead scoring, CRM columns and stages, UTM dictionary, tracking events, follow-up logic, automation flows |
 | `docs/04-landing-page-spec.md` | Landing page sections with example copy, course rules for landing pages, technical requirements |
 | `docs/05-course-frameworks.md` | What the DEPI lectures (Sessions 1 to 20) teach. Graders look for these frameworks by name |
-| `docs/06-system-design.md` | Architecture: how the site, Make, Claude, CRM and dashboard connect |
+| `docs/06-system-design.md` | Architecture: how the site, Make, Gemini, CRM and dashboard connect |
 | `docs/decisions.md` | Decisions log: what we chose and why. Add an entry for every new decision |
 | `CONTRIBUTING.md` | Branches, commit messages, PR checklist |
 | `docs/reference/` | Original PDFs: project guidelines, the teammate's strategy file, the team plan and role files |
@@ -39,7 +39,7 @@ The site has two kinds of pages:
 ## Landing page rules (from the course, do not break)
 
 - The landing page has **one goal**: book the free diagnostic. No navigation menu. The only links out are quiet ones: the logo and footer link to the home page (decision 11), WhatsApp and the privacy note.
-- **One CTA text** everywhere: "Book my free diagnostic". Repeated 3 to 5 times, sticky on mobile.
+- **One CTA text** everywhere: "Book my free diagnostic" in English, «عايز أعرف إيه اللي شغال» in Arabic. Repeated 3 to 5 times, sticky on mobile.
 - Mobile first. About 80% of Egyptian traffic is mobile. Tap targets 44px+, body text 16px+.
 - Speed: PageSpeed mobile over 80, hero image under 200KB in WebP, total page under 1.5MB.
 - Form is **our own two-step form** (`site/src/components/landing/LeadForm.tsx`), sent to Make by a Server Action. It passes `utm_source`, `utm_medium`, `utm_campaign`, `utm_content` from the page URL. Missing UTMs save as `direct`.
@@ -48,6 +48,7 @@ The site has two kinds of pages:
 - Consent banner before tags fire (Egypt PDPL).
 - **Never invent proof**: no fake testimonials, client logos, ratings or results. Only true claims.
 - Every landing page exists in English and Arabic (`/ar/...`, `dir="rtl"`, Cairo font), one page per language, same design.
+- Arabic voice: natural Egyptian Arabic, written for the owner's real worry, not translated from English. Conversational headlines, clear and professional form and privacy text. In Arabic the offer is «مراجعة تسويقية مجانية».
 
 ## Tech choices
 
@@ -55,12 +56,12 @@ The site has two kinds of pages:
 - Code rules (see `site/README.md`): text lives in `src/content/`, design in `src/components/`, brand tokens in `src/app/globals.css`. Pages only arrange sections. Server components by default, `"use client"` only when the browser is needed.
 - CMS (planned): **Sanity**, so teammates edit text, team profiles, projects and landing pages without code. `src/content/` files are shaped like the future Sanity documents.
 - Brand: pink `#FF2E93`, white, ink `#171717`. Fonts Outfit (headings), Inter (body), Caveat (handwriting). Logo is the "Idea Agency" wordmark with a 3-ray spark over the "a".
-- Automation: Make.com (n8n is the alternative). AI: Claude API (Max plan includes $100/month API credits) instead of Gemini, pending team agreement. CRM: Google Sheets. Dashboard: Looker Studio.
+- Automation: Make.com (n8n is the alternative). AI: Gemini API, free tier (decision 12). CRM: Google Sheets. Dashboard: Looker Studio.
 
 ## Open decisions (ask before assuming)
 
 - Final brand kit from the content teammate (current direction above is from the design concept)
-- Team sign-off on: our own form (replaces Tally), email field in step 2, Claude instead of Gemini (see docs/decisions.md)
+- Team sign-off on: our own form (replaces Tally), email field in step 2 (see docs/decisions.md)
 - Hosting: Vercel Pro, Netlify or Railway (Vercel free plan does not allow commercial use)
 - WhatsApp number, agency email, domain
 - Real team photos and names for the trust section

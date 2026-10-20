@@ -26,13 +26,20 @@ export function DiagnosticPage({ content }: { content: DiagnosticPageContent }) 
           <Eyebrow>{hero.eyebrow}</Eyebrow>
           <h1 className="mt-4 text-[clamp(34px,5vw,58px)] leading-[1.12] font-semibold">{hero.headline}</h1>
           <p className="mt-5 max-w-[540px] text-lg text-muted">{hero.subheadline}</p>
+          <ul className="mt-6 space-y-2.5">
+            {hero.highlights.map((highlight) => (
+              <li key={highlight} className="flex items-center gap-2.5 font-medium">
+                <CheckIcon />
+                {highlight}
+              </li>
+            ))}
+          </ul>
           <div className="mt-8">
             <Button href={FORM_ANCHOR} showArrow>
               {cta}
             </Button>
           </div>
-          <p className="mt-4 flex items-center gap-2 text-[15px] text-muted">
-            <CheckIcon />
+          <p className="mt-4 text-[15px] text-muted">
             {hero.trustLine}
           </p>
         </div>

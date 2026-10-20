@@ -56,3 +56,13 @@ Every important choice, with the reason. Newest at the bottom. If a decision cha
 **Date:** Oct 21, 2026
 **Decision:** On landing pages, the logo and a footer link ("Visit our website") open the home page. There is still no menu.
 **Why:** Some visitors want to check who we are before they leave their details, and a real agency site builds trust. The two links are quiet (no button style), so the free diagnostic stays the only clear action. This is a small exception to the course's "no links out" rule; we track it and can remove it if it lowers conversions.
+
+## 12. Gemini API instead of Claude
+**Date:** Oct 21, 2026
+**Decision:** Make.com uses the Gemini API (free tier) for the challenge rating, summary and replies. This replaces decision 5.
+**Why:** Team choice. Gemini matches the original frozen spec and its free tier is enough for the project. The privacy note names Google Gemini.
+
+## 13. Arabic copy rewritten in natural Egyptian Arabic
+**Date:** Oct 21, 2026
+**Decision:** The Arabic landing page was rewritten, not translated. The offer is called «مراجعة تسويقية مجانية» and the Arabic CTA is «عايز أعرف إيه اللي شغال». The hero gets 3 short points (20-minute call, 1-page plan, 48 hours) in both languages.
+**Why:** The first Arabic draft read like English marketing copy in Egyptian words. The new copy speaks to the owner's real worry ("I spend on ads, but are they bringing customers?"), sells clarity instead of promises, and is honest that we are new. The CTA is in the owner's own voice; since it does not say "free", a "free, no obligation" line sits near the buttons.

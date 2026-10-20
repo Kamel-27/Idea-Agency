@@ -19,6 +19,7 @@ export const diagnosticEn: DiagnosticPageContent = {
     headline: "Find out which part of your marketing brings customers, before you spend another pound.",
     subheadline:
       "A free 20-minute marketing diagnostic for Cairo businesses, with a 1-page action plan in 48 hours.",
+    highlights: ["Free 20-minute call", "A clear 1-page plan", "Your plan within 48 hours"],
     trustLine: "Free, no obligation. The plan is yours to keep.",
     planCard: {
       title: "Your 1-page plan",

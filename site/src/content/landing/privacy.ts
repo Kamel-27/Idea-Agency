@@ -27,7 +27,7 @@ export const privacyContent: Record<Locale, PrivacyContent> = {
       },
       {
         heading: "Where it goes",
-        body: "Your request is processed with Make.com (automation), saved in Google Sheets (our lead list), and summarized with an AI assistant (Anthropic Claude) so we can prepare for your call. Emails are sent with Gmail.",
+        body: "Your request is processed with Make.com (automation), saved in Google Sheets (our lead list), and summarized with an AI assistant (Google Gemini) so we can prepare for your call. Emails are sent with Gmail.",
       },
       {
         heading: "WhatsApp",
@@ -49,28 +49,28 @@ export const privacyContent: Record<Locale, PrivacyContent> = {
     updated: "آخر تحديث: أكتوبر 2026",
     sections: [
       {
-        heading: "بنجمع إيه",
-        body: "لما تطلب التشخيص المجاني، بنحفظ اللي بتكتبه في الفورم: اسمك، رقم الواتساب، الإيميل، اسم البيزنس، وإجاباتك عن البيزنس بتاعك. وكمان بنحفظ الإعلان أو اللينك اللي جابك للصفحة (UTM).",
+        heading: "البيانات اللي بنجمعها",
+        body: "لما تطلب المراجعة المجانية، بنحفظ البيانات اللي بتكتبها في الفورم: الاسم، رقم الواتساب، الإيميل، اسم البيزنس، وإجاباتك عن البيزنس. وكمان بنحفظ الإعلان أو الرابط اللي وصّلك للصفحة (UTM).",
       },
       {
-        heading: "ليه بنجمعها",
-        body: "بس عشان نتواصل معاك بخصوص التشخيص، ونجهز خطتك، ونتابع معاك. مش بنبيع بياناتك.",
+        heading: "بنستخدمها في إيه",
+        body: "بس عشان نتواصل معاك بخصوص المراجعة، ونجهز خطتك، ونتابع معاك. مش بنبيع بياناتك لأي حد.",
       },
       {
-        heading: "بتروح فين",
-        body: "طلبك بيتعالج على Make.com (أتمتة)، وبيتحفظ في Google Sheets (قائمة العملاء المحتملين)، وبنلخصه بمساعد ذكاء اصطناعي (Anthropic Claude) عشان نجهز للمكالمة. والإيميلات بتتبعت من Gmail.",
+        heading: "البيانات بتتعالج فين",
+        body: "طلبك بيتعالج على Make.com (أتمتة)، وبيتحفظ في Google Sheets (قائمة العملاء المحتملين)، وبنلخصه بمساعد ذكاء اصطناعي (Google Gemini) عشان نجهز للمكالمة. والإيميلات بتتبعت من Gmail.",
       },
       {
         heading: "واتساب",
-        body: "مش هنبعتلك على واتساب غير لو علمت على خانة الواتساب في الفورم.",
+        body: "مش هنتواصل معاك على واتساب إلا لو وافقت على ده في الفورم.",
       },
       {
         heading: "الكوكيز والتتبع",
-        body: "بموافقتك، بنستخدم Google Analytics و Meta Pixel عشان نعرف أنهي إعلان شغال. تقدر ترفضهم وتستخدم الصفحة عادي.",
+        body: "بعد موافقتك، بنستخدم Google Analytics و Meta Pixel عشان نعرف أنهي إعلانات بتجيب نتيجة. تقدر ترفضهم وتستخدم الصفحة عادي.",
       },
       {
-        heading: "اختياراتك",
-        body: "تقدر تطلب تشوف بياناتك أو تعدلها أو تمسحها في أي وقت. رد بس على أي رسالة نبعتهالك.",
+        heading: "حقوقك",
+        body: "تقدر تطلب تشوف بياناتك أو تعدلها أو تمسحها في أي وقت. رد بس على أي رسالة بعتناهالك.",
       },
     ],
   },
