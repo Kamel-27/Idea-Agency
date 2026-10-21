@@ -1,0 +1,21 @@
+{
+  "name": "أحمد سمير",
+  "phone": "+201000000006",
+  "business": "مطعم بيت الكبدة",
+  "email": "ahmed.samir@example.com",
+  "industry": "food",
+  "role": "owner",
+  "team_size": "5-49",
+  "spend": "5k_20k",
+  "challenge": "بنعمل إعلانات على فيسبوك كل شهر بس الطلبات مش بتزيد، ومش عارفين المشكلة فين.",
+  "timeline": "this_month",
+  "whatsapp_opt_in": true,
+  "utm_source": "meta",
+  "utm_medium": "cpc",
+  "utm_campaign": "leads_cairosme_2026-10",
+  "utm_content": "video_negation_v1",
+  "locale": "ar",
+  "page": "/ar/diagnostic",
+  "submitted_at": "2026-10-22T10:00:00.000Z",
+  "is_simulated": true
+}

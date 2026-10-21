@@ -1,0 +1,21 @@
+{
+  "name": "Nour Khaled",
+  "phone": "+201000000011",
+  "business": "Nour Beauty Salon",
+  "email": "nour.khaled@example.com",
+  "industry": "beauty",
+  "role": "owner",
+  "team_size": "5-49",
+  "spend": "5k_20k",
+  "challenge": "Customers find us only by word of mouth, our page brings nothing.",
+  "timeline": "within_3_months",
+  "whatsapp_opt_in": true,
+  "utm_source": "direct",
+  "utm_medium": "none",
+  "utm_campaign": "none",
+  "utm_content": "none",
+  "locale": "en",
+  "page": "/diagnostic",
+  "submitted_at": "2026-10-22T10:00:00.000Z",
+  "is_simulated": true
+}

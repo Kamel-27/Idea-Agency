@@ -76,3 +76,13 @@ Every important choice, with the reason. Newest at the bottom. If a decision cha
 **Date:** Oct 21, 2026
 **Decision:** The home page exists in Arabic at `/ar`, built from the same components as `/`. The website header has an English / العربية switch with a short (0.6 second) loading screen, like landing pages. The header keeps the English layout (logo on the left) in Arabic, while the Arabic menu items read right to left.
 **Why:** Visitors should be able to read the whole site in their language. The fixed header layout keeps the brand consistent across languages.
+
+## 16. Flow A design: Data store for duplicates, 6 extra CRM columns, one agency account
+**Date:** Oct 22, 2026
+**Decision:** Flow A finds duplicates with a Make Data store keyed by phone, not a Google Sheets search. The `Leads` tab adds `email`, `locale`, `page`, `wa_link`, `rule_score` and `ai_rating`. Make, the Google Sheet, Gmail and the Gemini key all belong to one agency Google account.
+**Why:** A Sheets search that finds nothing stops the Make route, so the new-lead path would never run; a Data store check always answers yes or no. The extra columns let us reply in the right language, track the landing page, hand the team a ready WhatsApp link, and show how each score was made (90 points rules, 10 points AI). One shared agency account means no project tool depends on a teammate's personal account.
+
+## 17. When Gemini fails, or a lead comes back: tell the team, keep it simple
+**Date:** Oct 21, 2026
+**Decision:** If Gemini fails, Flow A writes the lead to the `Errors` tab, emails the team with every detail, and stops; a teammate replies by hand. If the same phone sends the form again, the new answers go into the `Log` tab and the team gets a "Returning lead" email; no new CRM row and no AI call.
+**Why:** AI failures are rare (quota, outage, bad key), and a personal reply from the team beats a generic template. It also needs 3 modules instead of a dozen fallback formulas, which is easier to build, explain and maintain. A returning lead is often warmer than a new one, so the team should hear about it right away, without losing their first answers.

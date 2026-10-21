@@ -1,0 +1,21 @@
+{
+  "name": "AI Failure Test",
+  "phone": "+201000000010",
+  "business": "Test Co",
+  "email": "aifail.test@example.com",
+  "industry": "retail",
+  "role": "owner",
+  "team_size": "5-49",
+  "spend": "5k_20k",
+  "challenge": "Use this lead after breaking the Gemini key on purpose, to test the fallback reply.",
+  "timeline": "within_3_months",
+  "whatsapp_opt_in": true,
+  "utm_source": "meta",
+  "utm_medium": "cpc",
+  "utm_campaign": "leads_cairosme_2026-10",
+  "utm_content": "video_negation_v1",
+  "locale": "en",
+  "page": "/diagnostic",
+  "submitted_at": "2026-10-22T10:00:00.000Z",
+  "is_simulated": true
+}

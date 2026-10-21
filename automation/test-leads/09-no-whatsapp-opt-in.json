@@ -1,0 +1,21 @@
+{
+  "name": "Karim Nabil",
+  "phone": "+201000000009",
+  "business": "Karim Home Store",
+  "email": "karim.nabil@example.com",
+  "industry": "ecommerce",
+  "role": "owner",
+  "team_size": "5-49",
+  "spend": "5k_20k",
+  "challenge": "Our online store gets visitors but very few orders.",
+  "timeline": "within_3_months",
+  "whatsapp_opt_in": false,
+  "utm_source": "meta",
+  "utm_medium": "cpc",
+  "utm_campaign": "leads_cairosme_2026-10",
+  "utm_content": "video_negation_v1",
+  "locale": "en",
+  "page": "/diagnostic",
+  "submitted_at": "2026-10-22T10:00:00.000Z",
+  "is_simulated": true
+}

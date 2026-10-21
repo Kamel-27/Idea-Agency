@@ -1,0 +1,21 @@
+{
+  "name": "Sara Mahmoud",
+  "phone": "+201000000001",
+  "business": "Sara's Boutique",
+  "email": "sara.mahmoud@example.com",
+  "industry": "retail",
+  "role": "owner",
+  "team_size": "5-49",
+  "spend": "over_20k",
+  "challenge": "My Instagram ads get likes but no sales, and I spend about 25,000 EGP a month.",
+  "timeline": "this_month",
+  "whatsapp_opt_in": true,
+  "utm_source": "meta",
+  "utm_medium": "cpc",
+  "utm_campaign": "leads_cairosme_2026-10",
+  "utm_content": "video_negation_v1",
+  "locale": "en",
+  "page": "/diagnostic",
+  "submitted_at": "2026-10-22T10:00:00.000Z",
+  "is_simulated": true
+}
