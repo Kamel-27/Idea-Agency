@@ -49,7 +49,9 @@ CONSTRAINTS
 - One call to action only: we will message them on WhatsApp within one working
   day to book a 20-minute call. Do not add links.
 - Email: under 90 words, with a short friendly subject line under 8 words.
-- WhatsApp: under 50 words, no subject.
+- WhatsApp: under 50 words, no subject. A teammate sends it on WhatsApp, so do
+  not say we will message them on WhatsApp. End by asking when is a good time
+  for a 20-minute call.
 - Sign as "Idea Agency team" (in Arabic: "فريق Idea Agency").
 - Never mention prices. Never promise results. Never invent reviews, clients,
   numbers or experience. No em dashes.

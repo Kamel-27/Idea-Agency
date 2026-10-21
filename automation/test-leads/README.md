@@ -22,16 +22,16 @@ Rule score = spend + timeline + role + team size (max 90). The total adds Gemini
 
 | # | File | What it tests | Rule score | Expected result |
 | --- | --- | --- | --- | --- |
-| 1 | `01-hot-owner-high-spend` | Owner, over 20,000 EGP, this month | 90 | **Hot** (about 97). Email reply, team alert, status Contacted |
+| 1 | `01-hot-owner-high-spend` | Owner, over 20,000 EGP, this month | 90 | **Hot** (about 99). Email reply, team alert, status Contacted. **Passed Oct 21** (rating 9, score 99, IDEA-0001) |
 | 2 | `02-cold-student-no-budget` | Student, no budget, exploring | 15 | **Cold**. Email reply, no alert |
 | 3 | `03-warm-marketing-manager` | Manager, under 5,000 EGP, LinkedIn source | 55 | **Warm** (about 62). Email reply, `utm_source` = linkedin |
-| 4 | `04-duplicate-phone` | Same phone as test 1 | none | No new row. Test 1's row says "Submitted the form again". Log row `duplicate` |
+| 4 | `04-duplicate-phone` | Same phone as test 1, new message | none | No new row. Test 1's row says "Submitted the form again, see Log". Log row `duplicate` with the new answers. "Returning lead" email to the team. **Passed Oct 21** |
 | 5 | `05-invalid-phone` | Phone `12345` | none | The **website** blocks it with an error message (test it on the form). Sent straight to Make, it shows how Make handles bad data: note what happens |
 | 6 | `06-arabic-challenge` | Arabic page and Arabic challenge | 85 | **Hot**. Email in Egyptian Arabic, right-to-left |
 | 7 | `07-english-challenge` | English challenge | 60 | **Warm** (about 67). Email in English |
 | 8 | `08-spam-text` | Nonsense text | 15 | `is_spam` true, rating 0 to 2. **No email**, status Needs review |
 | 9 | `09-no-whatsapp-opt-in` | Opt-in box not ticked | 75 | Email only. `wa_link` says "No opt-in: email only" |
-| 10 | `10-ai-failure` | Gemini fails | 75 | First break the Gemini key in Make on purpose. Template email still goes out, Errors tab gets a row, status Needs review. Fix the key after |
+| 10 | `10-ai-failure` | Gemini fails | 75 | First select a Gemini connection with a wrong key on purpose. Errors tab gets a row, the team gets an "AI failed" email, the lead gets no automatic reply (the team replies by hand). Switch back to the real key after |
 | 11 | `11-no-utm-direct` | No UTM tags | 75 | `utm_source` = direct, `utm_medium` = none |
 | 12 | (manual) | Lead replies | none | In the sheet, change a lead's status to `Engaged`. Flow B must skip it on its next run |
 
