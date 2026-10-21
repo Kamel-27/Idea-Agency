@@ -98,7 +98,7 @@ The frozen scoring rules from `docs/03-system-spec.md`: spend 30, timeline 25, r
 - Message: role User, type Text, the prompt from `automation/prompts/gemini-lead-scoring.md` with `{{1.name}}`, `{{1.challenge}}` etc. mapped
 - Advanced settings > Generation configurations:
   - **Response Format: JSON Output.** Make then splits the answer into `Result` fields by itself, so no "parse JSON" step is needed
-  - **Response Schema:** 6 items: `challenge_rating` (Integer), `is_spam` (Boolean), `summary`, `email_subject`, `email_body`, `whatsapp_text` (String)
+  - **Response Schema: leave empty.** Adding one made every Gemini call fail in our build; JSON Output plus the prompt's output format is enough
   - **Thinking Level: Low.** The task is simple; high thinking only makes it slow
 
 Output used later: `10.result.challenge_rating`, `10.result.is_spam`, `10.result.summary`, `10.result.email_subject`, `10.result.email_body`, `10.result.whatsapp_text`.
@@ -193,6 +193,7 @@ Switch the scenario to **Active**, scheduling "Immediately as data arrives". The
 | Gemini rated test leads 2/10 | Test names said "Test", and the prompt rates tests 0 to 2. Test leads now use realistic names |
 | Gemini was slow (4,000+ thinking tokens) | Thinking Level: Low |
 | Resume could not show Gemini's fields | Gemini's output shape is dynamic. We replaced the fallback reply with an email to the team (decision 17) |
+| After adding a Response Schema, every Gemini call failed (the error route caught it) | Removed the schema. JSON Output alone works |
 | Alert emails landed in spam | New Gmail account. Mark as Not spam; a real domain fixes it long term |
 
 ## When something goes wrong
