@@ -40,16 +40,16 @@ How every part of the lead generation engine connects. The business rules (form 
 
 | Part | Tool | Job | Status |
 | --- | --- | --- | --- |
-| Website | Next.js in `site/` | Agency site + landing pages, captures UTMs | Home page and diagnostic pages (EN + AR) done |
+| Website | Next.js in `site/` | Agency site + landing pages, captures UTMs | Live at idea-agency.vercel.app (home, diagnostic, thank-you, privacy, EN + AR) |
 | CMS | Sanity | Teammates edit text, portfolios, landing pages | Planned, after Oct 30 |
-| Form | Our own Next.js form | Collects the lead, sends it to Make through a Server Action | Done, waiting for the Make webhook |
-| Automation | Make.com | Runs the capture and follow-up flows | Planned |
-| AI | Gemini API (free tier) | Rates the challenge text, writes summary and replies | Planned |
-| CRM | Google Sheets | Single source of truth for leads | Planned |
-| Email | Gmail | Instant reply and follow-ups | Planned |
-| WhatsApp | wa.me links | AI writes the message, a teammate taps to send | Planned |
-| Tracking | GTM, GA4, Meta Pixel | Page views, leads, WhatsApp clicks | Planned |
-| Dashboard | Looker Studio | Leads by source, tier and stage | Planned |
+| Form | Our own Next.js form | Collects the lead, sends it to Make through a Server Action | Live, connected to Make |
+| Automation | Make.com | Runs the capture and follow-up flows | Flow A and Flow B built and tested |
+| AI | Gemini API (free tier) | Rates the challenge text, writes summary and replies | Live in Flow A |
+| CRM | Google Sheets | Single source of truth for leads | Live |
+| Email | Gmail | Instant reply and follow-ups | Live (Flow A reply, Flow B Day 2 and Day 5) |
+| WhatsApp | wa.me links | AI writes the message, a teammate taps to send | Live in the CRM (`wa_link`). Agency number to be added on the site |
+| Tracking | GTM, GA4, Meta Pixel | Page views, leads, WhatsApp clicks | Events built on the site. GTM container to be installed |
+| Dashboard | Looker Studio | Leads by source, tier and stage | Reads the CRM sheet. In progress |
 
 ## Website structure
 
