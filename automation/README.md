@@ -8,8 +8,8 @@ Make scenarios live in your Make account, not in this repo. This folder holds wh
 
 | Flow | When it runs | What it does | Guide | Status |
 | --- | --- | --- | --- | --- |
-| **A. Capture** | Each new lead (webhook) | Dedupe, score, AI reply, CRM row, email, Hot alert | [flow-a-capture.md](flow-a-capture.md) | Guide ready |
-| **B. Follow-up** | Every day at 10:00 | Day 2 and Day 5 messages, then Nurture | coming | Not started |
+| **A. Capture** | Each new lead (webhook) | Dedupe, score, AI reply, CRM row, email, Hot alert | [flow-a-capture.md](flow-a-capture.md) | Built and tested |
+| **B. Follow-up** | Every day at 10:00 | Day 2 and Day 5 messages, then Nurture | [flow-b-followups.md](flow-b-followups.md) | Built and tested |
 | **C. Weekly report** | Mondays | Counts by source, tier, stage + AI insight email | coming | Optional |
 
 ## Folder map

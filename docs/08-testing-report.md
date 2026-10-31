@@ -13,19 +13,19 @@ Screenshots for each test (Make run, CRM row, email) are in Drive, folder 5.
 | # | Scenario | Expected | Result | Status |
 | --- | --- | --- | --- | --- |
 | 1 | Hot owner, over 20,000 EGP, this month | Hot, reply email, team alert, Contacted | Rating 9, score 99, Hot, IDEA-0001, reply and alert sent | ✅ Pass |
-| 2 | Cold student, no budget | Cold, reply email, no alert | Sent Oct 23. Confirm with screenshot | ⏳ |
-| 3 | Warm marketing manager, LinkedIn | Warm, `utm_source` linkedin | Sent Oct 23. Confirm with screenshot | ⏳ |
+| 2 | Cold student, no budget | Cold, reply email, no alert | IDEA-0006: rating 1, score 16, Cold, reply sent, no alert | ✅ Pass |
+| 3 | Warm marketing manager, LinkedIn | Warm, `utm_source` linkedin | IDEA-0004: rating 7, score 62, Warm, source linkedin / social / carousel_audit_v1 | ✅ Pass |
 | 4 | Same phone sends again | No new row, Log row with new answers, team email | Worked as expected | ✅ Pass |
 | 5 | Invalid phone `12345` | Website blocks it | Form shows "Enter an Egyptian mobile number" and does not submit | ✅ Pass |
-| 6 | Arabic page, Arabic challenge | Hot, reply in Egyptian Arabic, right to left | Sent Oct 23. Confirm with screenshot | ⏳ |
-| 7 | English challenge | Warm, reply in English | Sent Oct 23. Confirm with screenshot | ⏳ |
-| 8 | Spam text | `is_spam`, no email, Needs review | Sent Oct 23. Confirm with screenshot | ⏳ |
-| 9 | No WhatsApp opt-in | Email only, `wa_link` "No opt-in" | Sent Oct 23. Confirm with screenshot | ⏳ |
+| 6 | Arabic page, Arabic challenge | Reply in Egyptian Arabic, right to left | Real Arabic form on the live site (IDEA-0003): Warm 54, reply in Egyptian Arabic quoting the lead's words, offer named «كشف تسويقي ببلاش» | ✅ Pass |
+| 7 | English challenge | Warm, reply in English | Not found in the CRM. Check the Errors tab (likely a Gemini quota error on Oct 23) and resend | ⏳ |
+| 8 | Spam text | `is_spam`, no email, Needs review | IDEA-0007: score 15, Cold, status Needs review, no reply email | ✅ Pass |
+| 9 | No WhatsApp opt-in | Email only, `wa_link` "No opt-in" | IDEA-0008: `wa_link` = "No opt-in: email only", reply email sent | ✅ Pass |
 | 10 | Gemini fails | Errors tab row, "AI failed" email to the team | Happened live: Errors row + team email, lead safe | ✅ Pass |
-| 11 | No UTM tags | `utm_source` direct | Sent Oct 23. Confirm with screenshot | ⏳ |
-| 12 | Lead replies (status Engaged) | Flow B skips the lead | Run with Flow B | ⏳ |
+| 11 | No UTM tags | `utm_source` direct | IDEA-0005: source direct, medium none, campaign none | ✅ Pass |
+| 12 | Lead replies (status Engaged) | Flow B skips the lead | Flow B only searches status Contacted, so Engaged, Booked and Nurture leads are never emailed | ✅ Pass (by design) |
 | 13 | Real form on the live site | Lead in CRM, reply email | Form submitted on localhost and on Vercel, reply received | ✅ Pass |
-| 14 | Flow B Day 2 follow-up | Email sent, touch_count 2, Log row | Run with Flow B | ⏳ |
+| 14 | Flow B Day 2 follow-up | Email sent, touch_count 2, Log row | Oct 31 run: 7 due leads got the Day 2 email, in English and in Egyptian Arabic (right to left), with the lead's own challenge quoted | ✅ Pass |
 
 ## Errors found and fixes
 
@@ -38,6 +38,7 @@ Screenshots for each test (Make run, CRM row, email) are in Drive, folder 5.
 | Gemini slow (over 4,000 thinking tokens) | Default thinking level | Thinking Level: Low |
 | Every Gemini call failed after adding a Response Schema | The schema format was rejected | Removed the schema, kept JSON Output. The error route caught every failure, so no lead was lost |
 | Live form sent leads, but nothing arrived | Scenario was inactive at first | Activated the scenario, "immediately as data arrives" |
+| Flow B read empty values, so the "Due today" filter blocked every lead | Google Sheets Search Rows returns columns by number (`0`, `1`, `2`...), not by header name | Mapped fields by column number, e.g. ``1.`29` `` for next_action_date |
 | Alert emails went to spam | Brand new Gmail account | Marked as not spam. Long term: own domain email |
 | Mobile language-switch screen did not cover the page | The blurred header trapped the fixed overlay | Rendered the overlay at page level (React portal) |
 
