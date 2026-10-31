@@ -20,7 +20,7 @@ type LandingShellProps = {
 export function LandingShell({ content, children }: LandingShellProps) {
   return (
     <>
-      <header className="border-b border-line bg-white">
+      <header className="border-b border-line bg-paper">
         {/* dir="ltr": the header keeps the English layout on Arabic pages too
             (logo on the left, language switch on the right). */}
         <Container dir="ltr" className="flex h-17 items-center justify-between">
@@ -38,10 +38,10 @@ export function LandingShell({ content, children }: LandingShellProps) {
         <Container className="flex flex-wrap justify-between gap-3">
           <span>&copy; {siteConfig.name}</span>
           <div className="flex gap-5">
-            <Link href={content.homeHref} className="underline underline-offset-2 hover:text-brand">
+            <Link href={content.homeHref} className="underline underline-offset-2 hover:decoration-brand">
               {content.homeLabel}
             </Link>
-            <Link href={content.privacyHref} className="underline underline-offset-2 hover:text-brand">
+            <Link href={content.privacyHref} className="underline underline-offset-2 hover:decoration-brand">
               {content.privacyLabel}
             </Link>
           </div>

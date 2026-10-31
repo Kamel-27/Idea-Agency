@@ -12,7 +12,7 @@ export function Header({ locale }: { locale: Locale }) {
   const chrome = siteChrome[locale];
 
   return (
-    <header className="sticky top-0 z-20 border-b border-line bg-white/90 backdrop-blur">
+    <header className="sticky top-0 z-20 border-b border-line bg-paper/90 backdrop-blur">
       <Container dir="ltr" className="relative flex h-19 items-center justify-between gap-4">
         <Link href={chrome.homeHref} aria-label={siteConfig.name} className="pt-2.5">
           <Logo className="text-[28px]" />

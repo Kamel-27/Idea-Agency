@@ -9,7 +9,7 @@ type BaseProps = {
 };
 
 const inputClass =
-  "mt-2 block w-full rounded-xl border bg-white px-4 py-3 text-base text-ink outline-none transition placeholder:text-muted/60 focus:border-brand focus:ring-3 focus:ring-brand-soft";
+  "mt-2 block w-full rounded-xl border bg-white px-4 py-3 text-base text-ink outline-none transition placeholder:text-muted/60 focus:border-ink focus:ring-3 focus:ring-brand-soft";
 
 function borderClass(error?: string) {
   return error ? "border-red-500" : "border-line";
@@ -148,7 +148,7 @@ export function ChoiceField({ id, label, error, value, onChange, options }: Choi
           <label
             key={code}
             className={`flex min-h-11 cursor-pointer items-center rounded-full border px-4 text-[15px] transition has-focus-visible:ring-3 has-focus-visible:ring-brand-soft ${
-              value === code ? "border-brand bg-brand-tint text-brand" : "border-line hover:border-brand"
+              value === code ? "border-ink bg-ink text-white" : "border-line hover:border-ink"
             }`}
           >
             <input

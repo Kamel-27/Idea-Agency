@@ -21,7 +21,7 @@ export default function GlobalNotFound() {
           <p className="mt-3 text-muted">We are still building parts of the site.</p>
           <Link
             href="/"
-            className="mt-8 inline-flex min-h-12 items-center rounded-full bg-brand px-6 font-display font-medium text-white"
+            className="mt-8 inline-flex min-h-12 items-center rounded-full bg-brand px-6 font-display font-medium text-ink"
           >
             Back to home
           </Link>

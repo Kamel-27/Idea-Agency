@@ -95,7 +95,7 @@ Text lives in `content/`. Components only decide how text looks. To change a hea
 A page file is a short list of sections. To reorder a page, reorder those lines.
 
 **3. The brand is defined once.**
-Colors, fonts and shadows are tokens in `globals.css`. Components use them through Tailwind classes such as `bg-brand`, `text-muted`, `shadow-card`. Never write `#FF2E93` inside a component.
+Colors, fonts and shadows are tokens in `globals.css`. Components use them through Tailwind classes such as `bg-brand`, `text-muted`, `shadow-card`. Never write `#FFB020` inside a component.
 
 **4. Logic lives in `lib/`, not in components.**
 Validation, tracking and sending leads are plain TypeScript functions. Components call them. This makes the logic easy to read and to test on its own.
@@ -172,14 +172,22 @@ A file that starts with `"use client"` runs in the **browser** too. Only use it 
 
 | Token | Value | Tailwind class |
 | --- | --- | --- |
-| `brand` | `#FF2E93` | `bg-brand`, `text-brand`, `border-brand` |
-| `brand-soft` | `#FFE3F0` | pink background for blobs and badges |
-| `brand-tint` | `#FFF3F8` | very light pink for section backgrounds |
-| `ink` | `#171717` | main text, dark sections |
-| `muted` | `#5B5B66` | secondary text |
-| `line` | `#EEEEF2` | borders |
+Colors come from the brand kit (`docs/decisions.md`, decision 18). Keep the ratios: about 55% paper, 25% navy, 12% sand and slate, under 10% amber and teal.
 
-Fonts: **Outfit** for headings (`font-display`), **Inter** for body text (`font-sans`), **Caveat** for handwriting (`font-script`). Arabic pages use **Cairo** for all three.
+| Token | Brand kit name | Value | Use |
+| --- | --- | --- | --- |
+| `paper` | Paper White | `#F8F6F1` | page background (`bg-paper`) |
+| `ink` | Midnight Navy | `#0E1B3D` | main text, dark sections, icons, buttons text |
+| `brand` | Signal Amber | `#FFB020` | CTA buttons, the spark, underlines. Text only on navy |
+| `brand-soft` | | `#FFE8B8` | focus rings |
+| `teal` | Clear Teal | `#1CB5A3` | charts, numbers, check marks only |
+| `sand` | Soft Sand | `#EDE7DB` | secondary sections and soft shapes |
+| `muted` | Slate | `#5B6475` | secondary text |
+| `line` | | `#DDD6C8` | borders |
+
+Never put amber text on paper or white: it is too light to read. To make a word in a heading stand out, wrap it in `<span className="highlight">`, which draws an amber marker under it.
+
+Fonts: **Poppins** for headings (`font-display`), **Inter** for body text (`font-sans`). Arabic pages use **Cairo** for both.
 
 ## What is next
 

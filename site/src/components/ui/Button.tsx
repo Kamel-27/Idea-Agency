@@ -12,7 +12,7 @@ type ButtonProps = {
 };
 
 const variants = {
-  primary: "bg-brand text-white hover:shadow-brand",
+  primary: "bg-brand text-ink hover:shadow-brand",
   outline: "border-[1.5px] border-ink text-ink",
 };
 

@@ -86,3 +86,8 @@ Every important choice, with the reason. Newest at the bottom. If a decision cha
 **Date:** Oct 21, 2026
 **Decision:** If Gemini fails, Flow A writes the lead to the `Errors` tab, emails the team with every detail, and stops; a teammate replies by hand. If the same phone sends the form again, the new answers go into the `Log` tab and the team gets a "Returning lead" email; no new CRM row and no AI call.
 **Why:** AI failures are rare (quota, outage, bad key), and a personal reply from the team beats a generic template. It also needs 3 modules instead of a dozen fallback formulas, which is easier to build, explain and maintain. A returning lead is often warmer than a new one, so the team should hear about it right away, without losing their first answers.
+
+## 18. The website follows the brand kit
+**Date:** Oct 31, 2026
+**Decision:** The site uses the team's brand kit (Document 9), the same one used on social media. Paper White `#F8F6F1` background, Midnight Navy `#0E1B3D` text and dark sections, Signal Amber `#FFB020` for CTA buttons and highlights, Clear Teal `#1CB5A3` only for numbers and charts, Soft Sand `#EDE7DB` for secondary sections, Slate `#5B6475` for secondary text. Poppins for headings, Inter for body, Cairo for Arabic. Caveat is dropped. Buttons are amber with navy text. Key words in headings get an amber marker underline instead of colored text. The wordmark and spark stay, recolored navy and amber. Replaces decision 6.
+**Why:** One identity across ads, social and the site builds trust and helps people recognize us. Amber text on a light background is too hard to read, so amber is used as a fill or an underline, and as text only on navy.
