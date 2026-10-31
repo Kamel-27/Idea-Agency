@@ -2,7 +2,7 @@
 
 DEPI **Advanced Marketing Automation with AI** graduation project. **Elite Project 2.**
 
-🌐 **Live website:** [idea-agency.vercel.app](https://idea-agency.vercel.app) · Landing page: [Arabic](https://idea-agency.vercel.app/ar/diagnostic) · [English](https://idea-agency.vercel.app/diagnostic)
+🌐 **Live website:** [idea-agency.vercel.app](https://idea-agency.vercel.app) · 📁 **[All deliverables (Google Drive)](https://drive.google.com/drive/folders/1Mol7H_FLCazJjskIOBGygjB00-ouTKyC?usp=sharing)** · Landing page: [Arabic](https://idea-agency.vercel.app/ar/diagnostic) · [English](https://idea-agency.vercel.app/diagnostic)
 
 ---
 
@@ -92,7 +92,7 @@ Targets are planning assumptions, reviewed weekly with the dashboard. Full plan:
 
 ## 8. Project Files
 
-**Google Drive (all deliverables):** _link to be added_
+**Google Drive (all deliverables):** [IDEA Agency - DEPI Graduation Project](https://drive.google.com/drive/folders/1Mol7H_FLCazJjskIOBGygjB00-ouTKyC?usp=sharing)
 
 | Deliverable | Where |
 | --- | --- |
