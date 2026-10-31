@@ -48,7 +48,7 @@ Built-in safety: duplicate leads are detected, and if the AI fails, the lead is 
 | Oct 15 to 18 | Research and planning | Strategy file, personas, competitors, offer, frozen system spec | ✅ Done |
 | Oct 19 to 23 | Build | Website and landing pages (AR + EN), lead form, CRM, Make.com Flow A, Gemini prompt | ✅ Done |
 | Oct 24 to 29 | Content and creative | Brand kit, voice, pillars, hooks, calendar, posts, ad concepts, scripts, 3 videos, social media accounts | ✅ Done |
-| Oct 29 to 31 | Connect and test | Live deployment ✅, tracking plan ✅, testing scenarios ✅, Flow B follow-ups, dashboard | 🔄 Finishing |
+| Oct 29 to 31 | Connect and test | Live deployment ✅, tracking plan ✅, testing scenarios ✅, Flow B follow-ups ✅, dashboard | 🔄 Finishing |
 | Oct 31 | Document and present | Testing report ✅, final documentation, presentation deck | 🔄 Finishing |
 
 ## 5. Roles and Responsibilities
