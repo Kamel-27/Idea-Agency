@@ -62,7 +62,7 @@ export function DiagnosticPage({ content }: { content: DiagnosticPageContent }) 
           <ol className="mt-10 grid gap-6 md:grid-cols-3">
             {steps.items.map((item, index) => (
               <li key={item.title} className="rounded-card border border-line p-7">
-                <span className="grid size-12 place-items-center rounded-[14px] bg-brand font-display text-xl font-bold text-white">
+                <span className="grid size-12 place-items-center rounded-[14px] bg-brand font-display text-xl font-bold text-ink">
                   {index + 1}
                 </span>
                 <h3 className="mt-5 text-xl font-semibold">{item.title}</h3>
@@ -79,7 +79,7 @@ export function DiagnosticPage({ content }: { content: DiagnosticPageContent }) 
       </section>
 
       {/* 4. What you get (value stack) */}
-      <section className="bg-brand-tint py-16 lg:py-24">
+      <section className="bg-sand py-16 lg:py-24">
         <Container className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <SectionHeading eyebrow={value.eyebrow} title={value.title} />
           <ul className="space-y-4">
@@ -119,7 +119,7 @@ export function DiagnosticPage({ content }: { content: DiagnosticPageContent }) 
               <details key={item.question} className="group py-5">
                 <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 text-lg font-medium">
                   {item.question}
-                  <span className="text-2xl text-brand transition group-open:rotate-45" aria-hidden="true">
+                  <span className="text-2xl text-ink transition group-open:rotate-45" aria-hidden="true">
                     +
                   </span>
                 </summary>
@@ -131,7 +131,7 @@ export function DiagnosticPage({ content }: { content: DiagnosticPageContent }) 
       </section>
 
       {/* 7. Closing CTA + form */}
-      <section id="lead-form" className="scroll-mt-4 bg-brand-tint py-16 lg:py-24">
+      <section id="lead-form" className="scroll-mt-4 bg-sand py-16 lg:py-24">
         <Container className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-start">
           <div className="lg:sticky lg:top-10">
             <SectionHeading eyebrow={formSection.eyebrow} title={formSection.title} />
@@ -145,7 +145,7 @@ export function DiagnosticPage({ content }: { content: DiagnosticPageContent }) 
       </section>
 
       {/* Sticky CTA on phones */}
-      <div className="fixed inset-x-0 bottom-0 z-20 border-t border-line bg-white/95 p-3 backdrop-blur lg:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-20 border-t border-line bg-paper/95 p-3 backdrop-blur lg:hidden">
         <Button href={FORM_ANCHOR} className="w-full justify-center">
           {cta}
         </Button>
@@ -156,7 +156,7 @@ export function DiagnosticPage({ content }: { content: DiagnosticPageContent }) 
 
 function CheckIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="mt-0.5 size-5 shrink-0 text-brand" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg viewBox="0 0 24 24" className="mt-0.5 size-5 shrink-0 text-teal" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <path d="M5 12.5l4.5 4.5L19 7.5" />
     </svg>
   );

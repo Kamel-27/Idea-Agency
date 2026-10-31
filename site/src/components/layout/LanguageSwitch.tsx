@@ -56,7 +56,7 @@ export function LanguageSwitch({ locale }: { locale: Locale }) {
         lang={other.lang}
         onClick={handleClick}
         aria-disabled={isSwitching}
-        className="inline-flex min-h-11 items-center rounded-full border border-line px-4 text-[15px] font-medium transition hover:border-brand hover:text-brand"
+        className="inline-flex min-h-11 items-center rounded-full border border-line px-4 text-[15px] font-medium transition hover:border-ink"
       >
         {other.label}
       </a>
@@ -66,11 +66,11 @@ export function LanguageSwitch({ locale }: { locale: Locale }) {
           <div
             role="status"
             aria-live="polite"
-            className="fixed inset-0 z-[100] grid animate-fade-in place-items-center bg-white"
+            className="fixed inset-0 z-[100] grid animate-fade-in place-items-center bg-paper"
           >
             <div className="flex flex-col items-center gap-7">
               <Logo className="text-[34px]" />
-              <span className="size-10 animate-spin rounded-full border-4 border-brand-soft border-t-brand" />
+              <span className="size-10 animate-spin rounded-full border-4 border-sand border-t-brand" />
               <p lang={other.lang} dir={other.dir} className="text-muted">
                 {other.loading}
               </p>

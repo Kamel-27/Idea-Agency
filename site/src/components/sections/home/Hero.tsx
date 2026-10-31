@@ -12,7 +12,7 @@ export function Hero({ hero }: { hero: HomeContent["hero"] }) {
         <Eyebrow>{hero.eyebrow}</Eyebrow>
         <h1 className="mt-4.5 mb-5.5 text-[clamp(40px,6vw,76px)] leading-[1.05] font-semibold tracking-[-1.5px] rtl:tracking-normal">
           {hero.titleLine1}
-          <span className="block text-brand">{hero.titleLine2}</span>
+          <span className="block"><span className="highlight">{hero.titleLine2}</span></span>
         </h1>
         <p className="mb-8.5 max-w-[520px] text-[19px] text-muted">{hero.description}</p>
         <div className="flex flex-wrap gap-3.5">

@@ -57,12 +57,11 @@ The site has two kinds of pages:
 - Site: **Next.js 16 + React 19 + TypeScript + Tailwind CSS 4** in `/site`. This version has breaking changes: check `site/node_modules/next/dist/docs/` before using a Next.js API.
 - Code rules (see `site/README.md`): text lives in `src/content/`, design in `src/components/`, brand tokens in `src/app/globals.css`. Pages only arrange sections. Server components by default, `"use client"` only when the browser is needed.
 - CMS (planned): **Sanity**, so teammates edit text, team profiles, projects and landing pages without code. `src/content/` files are shaped like the future Sanity documents.
-- Brand: pink `#FF2E93`, white, ink `#171717`. Fonts Outfit (headings), Inter (body), Caveat (handwriting). Logo is the "Idea Agency" wordmark with a 3-ray spark over the "a".
+- Brand (brand kit, decision 18): Paper White `#F8F6F1`, Midnight Navy `#0E1B3D`, Signal Amber `#FFB020` (CTA and highlights only), Clear Teal `#1CB5A3` (data only), Soft Sand `#EDE7DB`, Slate `#5B6475`. Fonts Poppins (headings), Inter (body), Cairo (Arabic). Logo is the "Idea Agency" wordmark with a 3-ray amber spark over the "a".
 - Automation: Make.com (n8n is the alternative). AI: Gemini API, free tier (decision 12). CRM: Google Sheets. Dashboard: Looker Studio.
 
 ## Open decisions (ask before assuming)
 
-- Final brand kit from the content teammate (current direction above is from the design concept)
 - Team sign-off on: our own form (replaces Tally), email field in step 2 (see docs/decisions.md)
 - Hosting: Vercel Pro, Netlify or Railway (Vercel free plan does not allow commercial use)
 - WhatsApp number, agency email, domain

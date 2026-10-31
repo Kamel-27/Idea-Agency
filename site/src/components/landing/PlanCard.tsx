@@ -12,7 +12,7 @@ type PlanCardProps = {
 export function PlanCard({ title, rows, footer }: PlanCardProps) {
   return (
     <div aria-hidden="true" className="relative mx-auto w-full max-w-[440px]">
-      <div className="absolute -inset-4 -z-10 rounded-[40%_60%_55%_45%/50%_45%_55%_50%] bg-brand-soft sm:-inset-8" />
+      <div className="absolute -inset-4 -z-10 rounded-[40%_60%_55%_45%/50%_45%_55%_50%] bg-sand sm:-inset-8" />
 
       <div className="rotate-[-2deg] rounded-card bg-white p-6 shadow-card sm:p-8">
         <p className="font-display text-xl font-semibold">{title}</p>
@@ -21,7 +21,7 @@ export function PlanCard({ title, rows, footer }: PlanCardProps) {
         <ul className="mt-6 space-y-5">
           {rows.map((row, index) => (
             <li key={row} className="flex gap-4">
-              <span className="grid size-8 shrink-0 place-items-center rounded-full bg-brand-soft font-display text-sm font-bold text-brand">
+              <span className="grid size-8 shrink-0 place-items-center rounded-full bg-ink font-display text-sm font-bold text-brand">
                 {index + 1}
               </span>
               <div className="flex-1">
@@ -33,7 +33,7 @@ export function PlanCard({ title, rows, footer }: PlanCardProps) {
           ))}
         </ul>
 
-        <p className="mt-6 border-t border-line pt-4 text-sm font-medium text-brand">{footer}</p>
+        <p className="mt-6 border-t border-line pt-4 text-sm font-semibold text-ink">{footer}</p>
       </div>
 
       <Spark className="absolute -top-10 -end-6 size-16 rtl:-scale-x-100" />

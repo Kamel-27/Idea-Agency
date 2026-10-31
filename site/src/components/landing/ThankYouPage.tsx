@@ -20,7 +20,7 @@ export function ThankYouPage({ content, chrome }: ThankYouPageProps) {
       <h1 className="mt-4 text-[clamp(30px,4.5vw,48px)] leading-[1.15] font-semibold">{content.title}</h1>
       <p className="mt-4 text-lg text-muted">{content.body}</p>
 
-      <div className="mt-10 rounded-card bg-brand-tint p-7">
+      <div className="mt-10 rounded-card bg-sand p-7">
         <p className="font-display text-lg font-semibold">{content.listTitle}</p>
         <ul className="mt-4 space-y-3">
           {content.list.map((item) => (
@@ -35,7 +35,7 @@ export function ThankYouPage({ content, chrome }: ThankYouPageProps) {
       {whatsapp && (
         <p className="mt-8 text-muted">
           {content.whatsappPrompt}{" "}
-          <a href={whatsapp} target="_blank" rel="noopener noreferrer" className="font-medium text-brand underline underline-offset-2">
+          <a href={whatsapp} target="_blank" rel="noopener noreferrer" className="font-medium underline decoration-brand decoration-2 underline-offset-2">
             {chrome.whatsappLabel}
           </a>
         </p>

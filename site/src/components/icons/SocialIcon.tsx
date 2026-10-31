@@ -1,6 +1,6 @@
 import { siFacebook, siInstagram, siTiktok } from "simple-icons";
 
-// Brand icons drawn in the current text color (use text-brand, text-ink, ...).
+// Brand icons drawn in the current text color (use text-ink, text-white, ...).
 // Instagram, TikTok and Facebook come from the simple-icons package.
 // LinkedIn is not in that package, so its glyph is drawn here by hand.
 

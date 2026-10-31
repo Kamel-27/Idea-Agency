@@ -3,22 +3,31 @@
 /*
   DESIGN TOKENS
   The whole brand lives here. Tailwind turns every token into utility classes:
-    --color-brand   ->  bg-brand, text-brand, border-brand
+    --color-brand   ->  bg-brand, border-brand, decoration-brand
     --radius-card   ->  rounded-card
     --shadow-card   ->  shadow-card
   Change a value here and the whole site follows.
 */
 @theme {
-  --color-brand: #ff2e93;
-  --color-brand-soft: #ffe3f0;
-  --color-brand-tint: #fff3f8;
-  --color-ink: #171717;
-  --color-muted: #5b5b66;
-  --color-line: #eeeef2;
+  /*
+    Brand kit (Document 9). Keep the ratios: about 55% paper, 25% navy,
+    12% sand and slate, under 10% amber and teal together.
+    Amber is for CTA buttons, the path motif and highlights. Never use amber
+    for text on paper: it is too light to read. Teal is only for measured
+    numbers and positive signs.
+  */
+  --color-paper: #f8f6f1; /* Paper White: page background */
+  --color-ink: #0e1b3d; /* Midnight Navy: text, dark sections, icons */
+  --color-brand: #ffb020; /* Signal Amber: CTA, highlights */
+  --color-brand-soft: #ffe8b8; /* light amber for focus rings */
+  --color-teal: #1cb5a3; /* Clear Teal: data and measurement */
+  --color-sand: #ede7db; /* Soft Sand: secondary sections and surfaces */
+  --color-muted: #5b6475; /* Slate: secondary text */
+  --color-line: #ddd6c8; /* subtle borders on paper and sand */
 
   --radius-card: 18px;
-  --shadow-card: 0 18px 40px rgb(23 23 23 / 0.08);
-  --shadow-brand: 0 10px 24px rgb(255 46 147 / 0.35);
+  --shadow-card: 0 18px 40px rgb(14 27 61 / 0.08);
+  --shadow-brand: 0 10px 24px rgb(255 176 32 / 0.45);
 
   /* animate-fade-in: used by the language switch loading screen */
   --animate-fade-in: fade-in 0.2s ease-out;
@@ -34,17 +43,16 @@
   Fonts are loaded in lib/fonts.ts with next/font, which exposes them as
   CSS variables. "inline" makes Tailwind read those variables where they
   are used. The second value in var(a, b) is a fallback: Arabic pages have
-  no heading or handwriting font, so they use the body font (Cairo).
+  no heading font, so they use the body font (Cairo, bold for headings).
 */
 @theme inline {
-  --font-sans: var(--font-body), system-ui, sans-serif;
+  --font-sans: var(--font-body), -apple-system, system-ui, sans-serif;
   --font-display: var(--font-heading, var(--font-body)), sans-serif;
-  --font-script: var(--font-hand, var(--font-body)), cursive;
 }
 
 @layer base {
   body {
-    @apply bg-white font-sans text-base leading-relaxed text-ink antialiased;
+    @apply bg-paper font-sans text-base leading-relaxed text-ink antialiased;
   }
 
   h1,
@@ -52,4 +60,14 @@
   h3 {
     @apply font-display text-balance;
   }
+}
+
+/*
+  The amber marker under key words in headings (the path highlight).
+  Use it instead of amber text on light backgrounds.
+*/
+@utility highlight {
+  background-image: linear-gradient(transparent 62%, var(--color-brand) 62%, var(--color-brand) 92%, transparent 92%);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }

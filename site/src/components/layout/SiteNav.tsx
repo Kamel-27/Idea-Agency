@@ -29,8 +29,8 @@ export function SiteNav({ chrome }: { chrome: SiteChrome }) {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={`border-b-2 py-6.5 font-display font-medium transition-colors hover:border-brand hover:text-brand ${
-                  isActive(link.href) ? "border-brand text-brand" : "border-transparent"
+                className={`border-b-2 py-6.5 font-display font-medium transition-colors hover:border-brand ${
+                  isActive(link.href) ? "border-brand" : "border-transparent"
                 }`}
               >
                 {link.label}
@@ -66,7 +66,7 @@ export function SiteNav({ chrome }: { chrome: SiteChrome }) {
         <nav
           aria-label="Mobile"
           dir={locale === "ar" ? "rtl" : "ltr"}
-          className="absolute inset-x-0 top-full border-b border-line bg-white lg:hidden"
+          className="absolute inset-x-0 top-full border-b border-line bg-paper lg:hidden"
         >
           <ul className="px-6 pt-2 pb-6">
             {nav.map((link) => (
@@ -74,7 +74,7 @@ export function SiteNav({ chrome }: { chrome: SiteChrome }) {
                 <Link
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className={`block py-3 font-display text-lg font-medium ${isActive(link.href) ? "text-brand" : ""}`}
+                  className={`block py-3 font-display text-lg font-medium ${isActive(link.href) ? "underline decoration-brand decoration-[3px] underline-offset-8" : ""}`}
                 >
                   {link.label}
                 </Link>

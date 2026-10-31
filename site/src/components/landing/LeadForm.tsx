@@ -107,7 +107,7 @@ export function LeadForm({ content }: LeadFormProps) {
           <span>{form.stepLabel.replace("{step}", String(step))}</span>
           <span className="font-medium text-ink">{form.stepTitles[step - 1]}</span>
         </div>
-        <div className="mt-2 h-1.5 rounded-full bg-brand-soft">
+        <div className="mt-2 h-1.5 rounded-full bg-sand">
           <div className={`h-full rounded-full bg-brand transition-all ${step === 1 ? "w-1/2" : "w-full"}`} />
         </div>
       </div>
@@ -142,7 +142,7 @@ export function LeadForm({ content }: LeadFormProps) {
           <ChoiceField {...fieldProps("timeline")} value={lead.timeline} onChange={(v) => update("timeline", v)} options={form.options.timeline} />
           <CheckboxField id="whatsapp_opt_in" checked={lead.whatsapp_opt_in} onChange={(v) => update("whatsapp_opt_in", v)}>
             {form.labels.whatsapp_opt_in}{" "}
-            <Link href={links.privacy} target="_blank" className="text-brand underline underline-offset-2">
+            <Link href={links.privacy} target="_blank" className="font-medium underline decoration-brand decoration-2 underline-offset-2">
               {form.optInPrivacyText}
             </Link>
           </CheckboxField>
@@ -169,7 +169,7 @@ export function LeadForm({ content }: LeadFormProps) {
         <button
           type="submit"
           disabled={isSending}
-          className="min-h-12 flex-1 rounded-full bg-brand px-6 font-display text-[17px] font-medium text-white transition hover:shadow-brand disabled:opacity-60"
+          className="min-h-12 flex-1 rounded-full bg-brand px-6 font-display text-[17px] font-medium text-ink transition hover:shadow-brand disabled:opacity-60"
         >
           {step === 1 ? form.next : isSending ? form.sending : form.submit}
         </button>
