@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Tracking } from "@/components/tracking/Tracking";
 import { arabicFonts } from "@/lib/fonts";
 import "../globals.css";
 
@@ -16,7 +17,10 @@ export const metadata: Metadata = {
 export default function ArabicRootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ar" dir="rtl" className={arabicFonts}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Tracking locale="ar" />
+      </body>
     </html>
   );
 }

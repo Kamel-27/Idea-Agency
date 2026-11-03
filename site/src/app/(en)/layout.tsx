@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Tracking } from "@/components/tracking/Tracking";
 import { siteConfig } from "@/content/site";
 import { englishFonts } from "@/lib/fonts";
 import "../globals.css";
@@ -18,7 +19,10 @@ export const metadata: Metadata = {
 export default function EnglishRootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" dir="ltr" className={englishFonts}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Tracking locale="en" />
+      </body>
     </html>
   );
 }
