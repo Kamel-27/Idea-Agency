@@ -1,9 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="16" fill="#0E1B3D"/>
-  <rect x="23" y="27" width="11" height="27" rx="5.5" fill="#FFFFFF"/>
-  <g stroke="#FFB020" stroke-width="6" stroke-linecap="round">
-    <line x1="25" y1="18" x2="22" y2="7"/>
-    <line x1="34" y1="19" x2="43" y2="10"/>
-    <line x1="38" y1="26" x2="50" y2="25"/>
+  <rect width="64" height="64" rx="14" fill="#0E1B3D"/>
+  <g transform="translate(5, 23.5) scale(0.33)">
+    <g fill="#FFFFFF" fill-rule="evenodd">
+      <!-- I -->
+      <rect x="0" y="12" width="12" height="48" rx="1" />
+      <!-- D -->
+      <path d="M20 12h15a24 24 0 0 1 0 48H20Z M32 24h3a12 12 0 0 1 0 24h-3Z" />
+      <!-- E without middle bar -->
+      <path d="M66 12h32v12H78v24h20v12H66Z" />
+      <!-- A -->
+      <path d="M106 60l16-48h13l16 48h-13l-3-10h-16l-3 10Z M122 40h10l-5-16Z" />
+    </g>
+    <!-- E middle bar + the path from the A -->
+    <rect x="78" y="31" width="22" height="10" rx="1" fill="#FFB020" />
+    <path d="M131 18 152 0" stroke="#FFB020" stroke-width="6" stroke-linecap="round" fill="none" />
+    <circle cx="156" cy="-3" r="7" fill="#FFB020" />
   </g>
 </svg>

@@ -56,42 +56,41 @@ export const homeContent: Record<Locale, HomeContent> = {
     meta: {
       title: "Idea Agency",
       description:
-        "بنساعدك تكبّر البيزنس بتاعك أونلاين بـ Strategy واضحة، وقرارات مبنية على الأرقام، و Content بيوصل للناس الصح.",
+        "بنعمل Plan تسويق و Content و Ads للبيزنس بتاعك، ونتابع الأرقام معاك عشان تعرف كل جنيه بيروح فين.",
     },
     hero: {
       eyebrow: "Digital Marketing Agency",
-      titleLine1: "حوّل فكرتك",
-      titleLine2: "لـ Growth حقيقي",
+      titleLine1: "تسويق واضح،",
+      titleLine2: "بأرقام تفهمها",
       description:
-        "بنساعدك تكبّر البيزنس بتاعك أونلاين بـ Strategy واضحة، وقرارات مبنية على الأرقام، و Content بيوصل للناس الصح.",
-      primaryAction: { label: "يلا نتكلم", href: "/ar/contact" },
+        "بنعمل Plan تسويق و Content و Ads للبيزنس بتاعك، ونتابع الأرقام معاك عشان تعرف كل جنيه بيروح فين.",
+      primaryAction: { label: "احكيلنا عن مشروعك", href: "/ar/diagnostic" },
       secondaryAction: { label: "شوف خدماتنا", href: "#services" },
       // Stays in English on purpose: part of the design, written in a handwriting font.
       screenText: ["Better Marketing", "Bigger Opportunities"],
     },
     services: {
       eyebrow: "بنعمل إيه",
-      title: "من الـ Strategy لحد نتيجة تقدر تقيسها",
+      title: "من أول Plan لحد نتيجة تقدر تقيسها",
       items: [
         {
-          title: "Marketing Strategy",
-          description:
-            "بنفهم السوق والجمهور بتاعك، ونطلعلك رسالة واضحة وخطة 90 يوم، عشان كل فلوس بتصرفها يبقى ليها هدف.",
+          title: "Plan تسويق",
+          description: "بنفهم السوق وعملاءك، ونرتبلك هدف واضح وخطوات تمشي عليها، عشان كل جنيه يبقى ليه هدف.",
         },
         {
-          title: "Ads و Content",
-          description: "إعلانات ومحتوى و Tracking يوضحلك إيه اللي بيجيب عملاء وإيه اللي بيضيع فلوس.",
+          title: "Ads و Content",
+          description: "إعلانات ومحتوى بلغة عملائك، مع Tracking يوضحلك إيه اللي بيجيب عملاء وإيه اللي بيضيع فلوس.",
         },
         {
-          title: "Websites و Landing Pages",
-          description: "مواقع سريعة ومعمولة للموبايل الأول، هدفها تحوّل الزوار لـ Leads.",
+          title: "Websites و Landing Pages",
+          description: "مواقع سريعة ومعمولة للموبايل الأول، هدفها تحوّل الزوار لعملاء.",
         },
       ],
     },
     diagnosticCta: {
-      titleStart: "مش عارف إيه اللي شغال في التسويق بتاعك؟ اعمل",
-      titleHighlight: "كشف تسويقي ببلاش",
-      action: { label: "عايز أعرف إيه اللي شغال", href: "/ar/diagnostic" },
+      titleStart: "مش متأكد إن التسويق بتاعك ماشي صح؟ خد",
+      titleHighlight: "خطة تسويق ببلاش",
+      action: { label: "احكيلنا عن مشروعك", href: "/ar/diagnostic" },
     },
   },
 };

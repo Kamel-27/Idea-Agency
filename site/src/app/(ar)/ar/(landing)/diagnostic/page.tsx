@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { diagnosticAr } from "@/content/landing/diagnostic.ar";
-import { DiagnosticPage } from "@/components/landing/DiagnosticPage";
+import { diagnosticAr, diagnosticArImages } from "@/content/landing/diagnostic.ar";
+import { LandingPage } from "@/components/landing/LandingPage";
+
+// The address stays /ar/diagnostic: the running ads link here.
 
 export const metadata: Metadata = {
   title: diagnosticAr.meta.title,
@@ -8,5 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <DiagnosticPage content={diagnosticAr} />;
+  return <LandingPage content={diagnosticAr} images={diagnosticArImages} />;
 }

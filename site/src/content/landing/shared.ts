@@ -19,7 +19,7 @@ export const landingChrome: Record<Locale, LandingChromeContent> = {
     privacyLabel: "سياسة الخصوصية",
     privacyHref: "/ar/privacy",
     whatsappLabel: "كلمنا على واتساب",
-    whatsappMessage: "أهلًا Idea Agency، حابب أعرف أكتر عن الكشف التسويقي اللي ببلاش.",
+    whatsappMessage: "أهلًا Idea Agency، حابب أعرف أكتر عن خطة التسويق اللي ببلاش.",
   },
 };
 
