@@ -11,6 +11,10 @@ export const siteConfig = {
   // WhatsApp number in international format without "+", e.g. "201012345678".
   // Empty until the team picks the number: the WhatsApp buttons stay hidden.
   whatsappNumber: "",
+
+  // Meta Pixel ID (public, it is visible in every page's code anyway).
+  // Empty string = no Pixel.
+  metaPixelId: "947265578217685",
 };
 
 export const siteChrome: Record<Locale, SiteChrome> = {
