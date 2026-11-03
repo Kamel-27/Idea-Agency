@@ -101,25 +101,41 @@ The frozen scoring rules from `docs/03-system-spec.md`: spend 30, timeline 25, r
   - **Response Schema: leave empty.** Adding one made every Gemini call fail in our build; JSON Output plus the prompt's output format is enough
   - **Thinking Level: Low.** The task is simple; high thinking only makes it slow
 
-Output used later: `10.result.challenge_rating`, `10.result.is_spam`, `10.result.summary`, `10.result.email_subject`, `10.result.email_body`, `10.result.whatsapp_text`.
+Output used later: the 5 `10.result.check_*` answers, `10.result.is_spam`, `10.result.summary`, `10.result.email_subject`, `10.result.email_body`, `10.result.whatsapp_text`.
 
-### Error route on [10] (decision 17)
+### Error route on [10] (Flow A v2)
 
-Right-click Gemini > Add error handler. If Gemini fails (quota, outage, bad key), the lead is not lost and the team replies by hand:
+Right-click Gemini > Add error handler. If Gemini fails (quota, outage, bad key), the lead is **still saved and answered**:
 
-- **[19] Google Sheets > Add a Row**, sheet `Errors`: timestamp, flow `A`, module `Gemini`, error message, phone `'{{1.phone}}`, details `{{1.name}}, {{1.business}}`
-- **[21] Gmail > Send an email** to the team. Subject `AI failed: reply to {{1.name}} by hand`, content with every lead field
-- **[22] Skip**: the error is handled, the rest of the route does not run
+- **[19] Google Sheets > Add a Row**, sheet `Errors`: timestamp, flow `A`, module `Gemini`, phone, name and business
+- **[24] Google Sheets > Add a Row**, sheet `Leads`: every field, score = rule score only, tier from the rule score, status `Needs review`
+- **[25] Data store > Add/replace a record**: phone, row number, lead ID (so a second submission is seen as a duplicate)
+- **[26] Gmail > Send an email** to the lead: the template reply in their language (no AI text)
+- **[27] Google Sheets > Update a Row**: lead ID and last contact
+- **[21] Gmail > Send an email** to the team: "AI failed, lead saved as Needs review", with every field
+- **[22] Ignore**: the error is handled, the rest of the route does not run
+
+The team checks the lead and sets the status to `Contacted`; Flow B then sends the follow-ups.
+
+### [30] Tools > Set variable (Flow A v2)
+
+`ai_rating`: 2 points for each true check from Gemini, 0 for spam:
+
+```text
+{{if(10.result.is_spam; 0; sum(if(10.result.check_channel; 2; 0); if(10.result.check_symptom; 2; 0); if(10.result.check_goal; 2; 0); if(10.result.check_urgency; 2; 0); if(10.result.check_service; 2; 0)))}}
+```
+
+Modules [11] and [12] use `30.ai_rating` (not a rating written by Gemini), and `review` is `{{10.result.is_spam}}`.
 
 ### [11] Tools > Set multiple variables
 
 | Variable | Value |
 | --- | --- |
-| `score` | `{{sum(5.rule_score; 10.result.challenge_rating)}}` |
-| `tier` | `{{if(sum(5.rule_score; 10.result.challenge_rating) >= 70; "Hot"; if(sum(5.rule_score; 10.result.challenge_rating) >= 40; "Warm"; "Cold"))}}` |
-| `review` | `{{if(10.result.is_spam; true; contains(10.result.summary; "AI_FAILED"))}}` |
-| `next_action` | `{{if(sum(5.rule_score; 10.result.challenge_rating) >= 70; "Call within 2 hours"; if(sum(5.rule_score; 10.result.challenge_rating) >= 40; "Day 2 follow-up"; "Day 2 tip, then Nurture"))}}` |
-| `next_action_date` | `{{formatDate(if(sum(5.rule_score; 10.result.challenge_rating) >= 70; addHours(now; 2); addDays(now; 2)); "YYYY-MM-DD HH:mm")}}` |
+| `score` | `{{sum(5.rule_score; 30.ai_rating)}}` |
+| `tier` | `{{if(sum(5.rule_score; 30.ai_rating) >= 70; "Hot"; if(sum(5.rule_score; 30.ai_rating) >= 40; "Warm"; "Cold"))}}` |
+| `review` | `{{10.result.is_spam}}` |
+| `next_action` | `{{if(sum(5.rule_score; 30.ai_rating) >= 70; "Call within 2 hours"; if(sum(5.rule_score; 30.ai_rating) >= 40; "Day 2 follow-up"; "Day 2 tip, then Nurture"))}}` |
+| `next_action_date` | `{{formatDate(if(sum(5.rule_score; 30.ai_rating) >= 70; addHours(now; 2); addDays(now; 2)); "YYYY-MM-DD HH:mm")}}` |
 | `wa_link` | `https://wa.me/{{replace(1.phone; "+"; emptystring)}}?text={{encodeURL(10.result.whatsapp_text)}}` |
 
 Tiers from the spec: **Hot 70+, Warm 40 to 69, Cold under 40.** Each formula repeats the sum because Make cannot use a variable inside the module that sets it.
@@ -136,7 +152,7 @@ Sheet `Leads`, column headers as IDs: Yes.
 | `name`, `email`, `business`, `industry`, `role`, `team_size`, `spend`, `challenge`, `timeline`, `locale`, `page`, `utm_*` | same field from [1] |
 | `opt_in` | `{{1.whatsapp_opt_in}}` |
 | `rule_score` | `{{5.rule_score}}` |
-| `ai_rating` | `{{10.result.challenge_rating}}` |
+| `ai_rating` | `{{30.ai_rating}}` |
 | `score`, `tier`, `next_action`, `next_action_date` | from [11] |
 | `ai_summary` | `{{10.result.summary}}` |
 | `ai_reply` | `{{10.result.email_body}}` |

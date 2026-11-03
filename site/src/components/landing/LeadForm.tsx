@@ -4,14 +4,15 @@
 // Step 1 asks only 3 things (name, WhatsApp, business) so starting feels easy.
 // Step 2 asks the questions we use to score the lead.
 //
+// On Next: step 1 is saved quietly to the backup Inbox (savePartialLead).
 // On submit: validate in the browser -> call the submitLead Server Action ->
 // fire the generate_lead event -> go to the thank-you page.
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type { DiagnosticPageContent } from "@/content/landing/types";
-import { submitLead } from "@/lib/leads/submitLead";
+import { savePartialLead, submitLead } from "@/lib/leads/submitLead";
 import {
   EMPTY_LEAD,
   STEP_1_FIELDS,
@@ -34,6 +35,9 @@ export function LeadForm({ content }: LeadFormProps) {
   const router = useRouter();
 
   const [step, setStep] = useState<1 | 2>(1);
+  // Links the quiet step 1 save to the final submit in the backup Inbox.
+  // Created on the first "Next" click (not during render: the page is pre-rendered).
+  const formId = useRef("");
   const [lead, setLead] = useState<LeadInput>(EMPTY_LEAD);
   const [errors, setErrors] = useState<FieldErrors>({});
   const [honeypot, setHoneypot] = useState("");
@@ -63,6 +67,17 @@ export function LeadForm({ content }: LeadFormProps) {
 
     setStep(2);
     trackEvent("form_step2", { locale });
+
+    // Save step 1 in the background, so we keep the lead even if they stop here.
+    // The visitor does not wait for it and sees nothing.
+    formId.current ||= crypto.randomUUID();
+    void savePartialLead(lead, {
+      locale,
+      page: window.location.pathname,
+      utm: readUtmFromUrl(),
+      honeypot,
+      formId: formId.current,
+    });
   }
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -81,6 +96,7 @@ export function LeadForm({ content }: LeadFormProps) {
       page: window.location.pathname,
       utm: readUtmFromUrl(),
       honeypot,
+      formId: formId.current,
     });
 
     if (result.ok) {
