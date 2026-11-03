@@ -1,4 +1,4 @@
-import type { ConsentBannerText, Locale, SiteChrome } from "./types";
+import type { Locale, SiteChrome } from "./types";
 
 // Site-wide settings, and the header text in each language.
 // Edit text here, the header updates on every page of that language.
@@ -13,24 +13,8 @@ export const siteConfig = {
   whatsappNumber: "",
 
   // Meta Pixel ID (public, it is visible in every page's code anyway).
-  // Empty string = no Pixel and no consent banner.
+  // Empty string = no Pixel.
   metaPixelId: "947265578217685",
-};
-
-// The cookie banner text. The Pixel only loads after "Accept".
-export const consentBanner: Record<Locale, ConsentBannerText> = {
-  en: {
-    text: "We use cookies to measure which ads bring visitors, so we can improve them.",
-    privacy: { label: "Privacy policy", href: "/privacy" },
-    accept: "Accept",
-    refuse: "Refuse",
-  },
-  ar: {
-    text: "بنستخدم Cookies عشان نعرف أنهي إعلانات بتجيب زوار ونحسّنها.",
-    privacy: { label: "سياسة الخصوصية", href: "/ar/privacy" },
-    accept: "موافق",
-    refuse: "لا شكرًا",
-  },
 };
 
 export const siteChrome: Record<Locale, SiteChrome> = {

@@ -19,7 +19,7 @@ export default function ArabicRootLayout({ children }: { children: React.ReactNo
     <html lang="ar" dir="rtl" className={arabicFonts}>
       <body>
         {children}
-        <Tracking locale="ar" />
+        <Tracking />
       </body>
     </html>
   );

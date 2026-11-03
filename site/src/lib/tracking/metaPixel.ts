@@ -1,6 +1,6 @@
 // Loads the Meta Pixel and sends events to it. Browser only.
-// This is Meta's official base code, written as a function so it runs only
-// after the visitor accepts cookies (instead of pasting it in <head>).
+// This is Meta's official base code, written as a function (instead of
+// pasting it in <head>) so it can be loaded from a React component.
 
 type Fbq = ((...args: unknown[]) => void) & {
   callMethod?: (...args: unknown[]) => void;

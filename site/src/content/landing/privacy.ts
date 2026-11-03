@@ -35,7 +35,7 @@ export const privacyContent: Record<Locale, PrivacyContent> = {
       },
       {
         heading: "Cookies and tracking",
-        body: "With your consent, we use Google Analytics and the Meta Pixel to understand which ads work. You can refuse them and still use the page.",
+        body: "We use the Meta Pixel (and later Google Analytics) to understand which ads work. You can block them with your browser's privacy settings or an ad blocker and still use the page.",
       },
       {
         heading: "Your choices",
@@ -66,7 +66,7 @@ export const privacyContent: Record<Locale, PrivacyContent> = {
       },
       {
         heading: "الكوكيز والتتبع",
-        body: "بعد موافقتك، بنستخدم Google Analytics و Meta Pixel عشان نعرف أنهي إعلانات بتجيب نتيجة. تقدر ترفضهم وتستخدم الصفحة عادي.",
+        body: "بنستخدم Meta Pixel (وبعدين Google Analytics) عشان نعرف أنهي إعلانات بتجيب نتيجة. تقدر توقفهم من إعدادات الخصوصية في المتصفح أو بـ Ad Blocker وتستخدم الصفحة عادي.",
       },
       {
         heading: "حقوقك",

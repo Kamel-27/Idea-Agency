@@ -21,7 +21,7 @@ export default function EnglishRootLayout({ children }: { children: React.ReactN
     <html lang="en" dir="ltr" className={englishFonts}>
       <body>
         {children}
-        <Tracking locale="en" />
+        <Tracking />
       </body>
     </html>
   );

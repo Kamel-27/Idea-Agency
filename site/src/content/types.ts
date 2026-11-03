@@ -25,14 +25,6 @@ export type SiteChrome = {
   closeMenu: string;
 };
 
-/** Cookie consent banner text, per language. */
-export type ConsentBannerText = {
-  text: string;
-  privacy: NavLink;
-  accept: string;
-  refuse: string;
-};
-
 export type HomeContent = {
   locale: Locale;
   meta: { title: string; description: string };

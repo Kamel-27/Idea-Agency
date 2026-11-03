@@ -1,5 +1,5 @@
 // Sends tracking events to Google Tag Manager through window.dataLayer,
-// and to the Meta Pixel directly (it only exists after cookie consent).
+// and to the Meta Pixel directly.
 // Until GTM is installed, the dataLayer events just collect there, which is harmless.
 // If GTM later forwards events to Meta too, remove the Meta part here to avoid counting twice.
 //
