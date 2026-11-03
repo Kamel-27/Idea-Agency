@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { LeadForm } from "./LeadForm";
 
-// The landing page in the new IDEA look (Arabic /ar/diagnostic). Ads send people here.
+// The landing page in the new IDEA look (/diagnostic and /ar/diagnostic). Ads send people here.
 // Order: hero (illustration) -> problem -> steps (illustration) -> what you get
 // and who we are -> form -> FAQ. Every button jumps down to the form.
 // LandingShell adds the header, footer and WhatsApp button around it.

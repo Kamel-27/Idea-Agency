@@ -10,7 +10,7 @@ export const landingChrome: Record<Locale, LandingChromeContent> = {
     privacyLabel: "Privacy note",
     privacyHref: "/privacy",
     whatsappLabel: "Chat on WhatsApp",
-    whatsappMessage: "Hi Idea Agency, I would like to ask about the free marketing diagnostic.",
+    whatsappMessage: "Hi Idea Agency, I would like to ask about the free marketing plan.",
   },
   ar: {
     locale: "ar",

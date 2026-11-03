@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { diagnosticEn } from "@/content/landing/diagnostic.en";
-import { DiagnosticPage } from "@/components/landing/DiagnosticPage";
+import { diagnosticEn, diagnosticEnImages } from "@/content/landing/diagnostic.en";
+import { LandingPage } from "@/components/landing/LandingPage";
+
+// The address stays /diagnostic: ads and shared links point here.
 
 export const metadata: Metadata = {
   title: diagnosticEn.meta.title,
@@ -8,5 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <DiagnosticPage content={diagnosticEn} />;
+  return <LandingPage content={diagnosticEn} images={diagnosticEnImages} />;
 }

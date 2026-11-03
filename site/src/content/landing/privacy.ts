@@ -19,11 +19,11 @@ export const privacyContent: Record<Locale, PrivacyContent> = {
     sections: [
       {
         heading: "What we collect",
-        body: "When you request the free diagnostic, we collect what you type in the form: your name, WhatsApp number, email, business name and your answers about your business. We also save which ad or link brought you to the page (UTM tags).",
+        body: "When you request the free marketing plan, we collect what you type in the form: your name, WhatsApp number, email, business name and your answers about your business. We also save which ad or link brought you to the page (UTM tags).",
       },
       {
         heading: "Why we collect it",
-        body: "Only to contact you about your diagnostic, prepare your plan and follow up about it. We do not sell your data.",
+        body: "Only to contact you about your plan, prepare it and follow up about it. We do not sell your data.",
       },
       {
         heading: "Where it goes",

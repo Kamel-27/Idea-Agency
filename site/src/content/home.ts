@@ -13,41 +13,42 @@ export const homeContent: Record<Locale, HomeContent> = {
     meta: {
       title: "Idea Agency",
       description:
-        "A digital marketing and web agency. Clear strategy, data-driven decisions and content that connects.",
+        "Marketing plans, content and ads for your business, with the numbers tracked so you know where every pound goes.",
     },
     hero: {
       eyebrow: "Digital marketing agency",
-      titleLine1: "Turn Ideas Into",
-      titleLine2: "Real Growth",
+      titleLine1: "Clear marketing,",
+      titleLine2: "numbers you understand",
       description:
-        "We help brands grow online with clear strategy, data-driven decisions, and content that connects.",
-      primaryAction: { label: "Let's Talk", href: "/contact" },
+        "We create marketing plans, content and ads for your business, and track the numbers with you so you know where every pound goes.",
+      primaryAction: { label: "Tell us about your business", href: "/diagnostic" },
       secondaryAction: { label: "Our services", href: "#services" },
       screenText: ["Better Marketing", "Bigger Opportunities"],
     },
     services: {
       eyebrow: "What we do",
-      title: "From marketing strategy to measurable action",
+      title: "From the first plan to results you can measure",
       items: [
         {
-          title: "Marketing strategy",
-          description: "Research, audience, messaging and a 90-day plan, so every pound has a job.",
+          title: "Marketing plan",
+          description:
+            "We understand your market and customers, and set a clear goal with steps to follow, so every pound has a purpose.",
         },
         {
-          title: "Campaigns and content",
+          title: "Ads and content",
           description:
-            "Ads, content and tracking that show you what brings customers and what does not.",
+            "Ads and content in your customers' language, with tracking that shows what brings customers and what wastes money.",
         },
         {
           title: "Websites and landing pages",
-          description: "Fast, mobile-first sites built to turn visitors into leads.",
+          description: "Fast, mobile-first sites built to turn visitors into customers.",
         },
       ],
     },
     diagnosticCta: {
-      titleStart: "Not sure what is working? Get a",
-      titleHighlight: "free marketing diagnostic",
-      action: { label: "Book my free diagnostic", href: "/diagnostic" },
+      titleStart: "Not sure your marketing is on the right track? Get a",
+      titleHighlight: "free marketing plan",
+      action: { label: "Tell us about your business", href: "/diagnostic" },
     },
   },
 
