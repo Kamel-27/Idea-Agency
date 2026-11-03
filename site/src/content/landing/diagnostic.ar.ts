@@ -4,29 +4,29 @@ import type { DiagnosticPageContent } from "./types";
 // Voice: Egyptian Arabic the way business owners really talk, with common
 // English marketing words mixed in (Ads, Plan, Budget). Conversational in the
 // headlines, clear and professional in the form and privacy text.
-// In Arabic the offer is called «كشف تسويقي ببلاش». No city or country names.
+// In Arabic the offer is called «خطة تسويق ببلاش». No city or country names.
 // Rule: only true claims. No invented reviews, numbers or results.
 // Spacing note: short Arabic prefixes (بـ، لـ، الـ، و) before an English word are
 // joined to it with a non-breaking space, so a line never breaks between them.
 // It looks like a normal space. A normal space also works, it just may wrap badly.
 
-const cta = "عايز أعرف إيه اللي شغال";
+const cta = "احكيلنا عن مشروعك";
 
 export const diagnosticAr: DiagnosticPageContent = {
   locale: "ar",
   meta: {
-    title: "كشف تسويقي ببلاش",
+    title: "خطة تسويق ببلاش",
     description:
-      "اكشف على التسويق بتاعك واعرف فلوسك بتروح فين: Call ببلاش لمدة 20 دقيقة، و Plan واضحة في صفحة واحدة توصلك خلال 48 ساعة.",
+      "احكيلنا عن مشروعك، وخد Call ببلاش لمدة 20 دقيقة، و Plan واضحة في صفحة واحدة توصلك خلال 48 ساعة.",
   },
   cta,
   links: { thankYou: "/ar/thank-you", privacy: "/ar/privacy" },
 
   hero: {
-    eyebrow: "كشف تسويقي ببلاش",
+    eyebrow: "خطة تسويق ببلاش",
     headline: "بتصرف على الإعلانات، بس مش عارف إيه اللي بيجيبلك عملاء فعلًا؟",
     subheadline:
-      "اكشف على التسويق بتاعك، واعرف فلوسك بتروح فين. هنبص على الـ Ads والـ Pages بتاعتك، ونقولك إيه اللي شغال، وتعمل إيه في الـ30 يوم الجايين.",
+      "احكيلنا عن مشروعك. في Call لمدة 20 دقيقة هنبص على الـ Ads والـ Pages بتاعتك، ونطلعلك خطة واضحة: إيه اللي شغال، فلوسك بتروح فين، وتعمل إيه في الـ30 يوم الجايين.",
     highlights: ["Call ببلاش لمدة 20 دقيقة", "Plan واضحة في صفحة واحدة", "الـ Plan توصلك خلال 48 ساعة"],
     trustLine: "ببلاش ومن غير أي التزام. والـ Plan بتاعتك حتى لو ما اشتغلتش معانا.",
     planCard: {
@@ -59,7 +59,7 @@ export const diagnosticAr: DiagnosticPageContent = {
     eyebrow: "هتاخد إيه",
     title: "كل اللي محتاجه عشان تاخد قرارك الجاي وانت فاهم",
     items: [
-      "كشف على الـ Social Media Pages والـ Ads بتاعتك",
+      "نظرة على الـ Social Media Pages والـ Ads بتاعتك",
       "أهم 3 أماكن بتخسر فيها فلوس أو عملاء",
       "Plan لـ 30 يوم تنفذها بنفسك أو مع أي Team",
       "ببلاش، ومن غير أي التزام",
@@ -71,7 +71,7 @@ export const diagnosticAr: DiagnosticPageContent = {
     title: "إحنا Idea Agency، وعايزين نبدأ معاك بشغل واضح",
     paragraphs: [
       "إحنا Team من 5 أشخاص، اتدربنا على التسويق والـ Automation بالـ AI في برنامج DEPI.",
-      "لسه بنبني الـ Portfolio بتاعنا، فمش هتلاقي هنا Reviews لسه. وعشان كده بنبدأ بكشف ببلاش يساعدك تفهم وضع التسويق عندك قبل ما تاخد أي قرار أو تدفع أي حاجة.",
+      "لسه بنبني الـ Portfolio بتاعنا، فمش هتلاقي هنا Reviews لسه. وعشان كده بنبدأ بخطة ببلاش تساعدك تفهم وضع التسويق عندك قبل ما تاخد أي قرار أو تدفع أي حاجة.",
     ],
   },
 
@@ -79,25 +79,25 @@ export const diagnosticAr: DiagnosticPageContent = {
     eyebrow: "أسئلة متكررة",
     title: "قبل ما تبدأ",
     items: [
-      { question: "هو الكشف ببلاش فعلًا؟", answer: "أيوه. الـ Call والـ Plan ببلاش بالكامل." },
+      { question: "هي الخطة ببلاش فعلًا؟", answer: "أيوه. الـ Call والـ Plan ببلاش بالكامل." },
       {
         question: "لازم أشتغل معاكم بعدها؟",
         answer: "لأ. الـ Plan بتاعتك، تنفذها بنفسك أو مع أي حد تختاره.",
       },
       {
-        question: "الكشف ده مناسب لمين؟",
+        question: "الخطة دي مناسبة لمين؟",
         answer: "لأصحاب ومديري البيزنس اللي بيصرفوا على التسويق بالفعل، وعايزين يعرفوا إيه اللي بيجيب نتيجة.",
       },
       {
         question: "بياناتي هتتستخدم في إيه؟",
-        answer: "بنستخدمها بس عشان نتواصل معاك بخصوص الكشف. التفاصيل كلها في سياسة الخصوصية.",
+        answer: "بنستخدمها بس عشان نتواصل معاك بخصوص الخطة. التفاصيل كلها في سياسة الخصوصية.",
       },
     ],
   },
 
   formSection: {
     eyebrow: "ابدأ دلوقتي",
-    title: "اعرف إيه اللي شغال في التسويق بتاعك",
+    title: "احكيلنا عن مشروعك",
     riskReversal: "ببلاش ومن غير التزام. هنكلمك خلال يوم عمل واحد.",
   },
 
@@ -164,5 +164,21 @@ export const diagnosticAr: DiagnosticPageContent = {
     back: "رجوع",
     submit: cta,
     sending: "جاري الإرسال...",
+  },
+};
+
+// Illustrations of the Arabic landing page (files in public/concept/).
+export const diagnosticArImages = {
+  hero: {
+    src: "/concept/team-chat.webp",
+    width: 2472,
+    height: 1518,
+    alt: "اتنين من فريق Idea Agency بيتناقشوا في Plan على اللابتوب",
+  },
+  steps: {
+    src: "/concept/planning-chair.webp",
+    width: 2138,
+    height: 1584,
+    alt: "صاحب بيزنس قاعد بيفكر في خطة التسويق بتاعته",
   },
 };

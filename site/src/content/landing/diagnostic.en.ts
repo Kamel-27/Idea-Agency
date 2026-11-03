@@ -1,100 +1,99 @@
 import type { DiagnosticPageContent } from "./types";
 
-// English text of the free diagnostic landing page (/diagnostic).
-// Draft copy from docs/04-landing-page-spec.md. The funnel teammate finalizes it.
+// English text of the landing page (/diagnostic). Same message as the Arabic
+// page: the free offer is a "free marketing plan", the main button is
+// "Tell us about your business".
 // Rule: only true claims. No invented reviews, numbers or results.
+
+const cta = "Tell us about your business";
 
 export const diagnosticEn: DiagnosticPageContent = {
   locale: "en",
   meta: {
-    title: "Free SME Marketing Diagnostic",
+    title: "Free Marketing Plan",
     description:
-      "A free 20-minute marketing diagnostic for your business, with a 1-page action plan in 48 hours.",
+      "Tell us about your business and get a free 20-minute call and a clear 1-page plan within 48 hours.",
   },
-  cta: "Book my free diagnostic",
+  cta,
   links: { thankYou: "/thank-you", privacy: "/privacy" },
 
   hero: {
-    eyebrow: "Free SME marketing diagnostic",
-    headline: "Find out which part of your marketing brings customers, before you spend another pound.",
+    eyebrow: "Free marketing plan",
+    headline: "You spend on ads, but do you know what actually brings you customers?",
     subheadline:
-      "A free 20-minute marketing diagnostic for your business, with a 1-page action plan in 48 hours.",
+      "Tell us about your business. On a 20-minute call we look at your ads and pages, then give you a clear plan: what is working, where your money goes, and what to do in the next 30 days.",
     highlights: ["Free 20-minute call", "A clear 1-page plan", "Your plan within 48 hours"],
-    trustLine: "Free, no obligation. The plan is yours to keep.",
+    trustLine: "Free, with no obligation. The plan is yours, even if you never work with us.",
     planCard: {
       title: "Your 1-page plan",
-      rows: ["What is working", "What is wasting money", "Your next 30 days"],
+      rows: ["What is working", "Where your money goes", "Your next 30 days"],
       footer: "Ready in 48 hours",
     },
   },
 
   problem: {
-    eyebrow: "Sound familiar?",
-    title: "You spend on marketing, but you do not know what works",
-    body: "You boost posts, pay a freelancer, try a new ad every month. Some months sales go up, some months they do not, and you do not know why.",
+    eyebrow: "The problem",
+    title: "You spend on marketing, but cannot see the full picture?",
+    body: "You boost posts, try new ads, maybe pay a freelancer. But is it bringing sales, or is part of your budget going nowhere?",
   },
 
   steps: {
     eyebrow: "How it works",
-    title: "Three simple steps",
+    title: "3 simple steps to know where to start",
     items: [
-      { title: "Fill the short form", description: "It takes about one minute." },
+      { title: "Tell us about your business", description: "The form takes a minute." },
+      { title: "A 20-minute call", description: "We look at your pages, ads and numbers together." },
       {
-        title: "Talk to us for 20 minutes",
-        description: "We look at your page, your ads and your numbers with you.",
-      },
-      {
-        title: "Get your 1-page plan",
-        description: "What is working, what is wasting money, and what to do in the next 30 days.",
+        title: "Get a clear plan",
+        description: "The 3 things that most need fixing, and what to do in the next 30 days.",
       },
     ],
   },
 
   value: {
     eyebrow: "What you get",
-    title: "Everything you need to decide your next move",
+    title: "Everything you need to make your next decision with confidence",
     items: [
-      "A review of your social media pages and ads",
-      "The 3 biggest places you are losing money or customers",
-      "A 30-day action plan you can follow yourself or with anyone",
+      "A look at your social media pages and ads",
+      "The 3 biggest places you lose money or customers",
+      "A 30-day plan you can follow yourself or with any team",
       "Free, with no obligation",
     ],
   },
 
   trust: {
     eyebrow: "Who we are",
-    title: "A new agency that shows its work",
+    title: "We are Idea Agency, and we want to start with clear work",
     paragraphs: [
-      "Idea Agency is a team of five: marketing strategists, content creators and a web developer, trained in DEPI's Advanced Marketing Automation with AI program.",
-      "We are new, so you will not see reviews here yet. We would rather earn them. The diagnostic is how we prove we can help, before you pay anything.",
+      "We are a team of 5, trained in marketing and AI automation in the DEPI program.",
+      "We are still building our portfolio, so you will not find reviews here yet. That is why we start with a free plan that helps you understand your marketing before you decide or pay anything.",
     ],
   },
 
   faq: {
     eyebrow: "Questions",
-    title: "Before you book",
+    title: "Before you start",
     items: [
-      { question: "Is it really free?", answer: "Yes. The call and the plan are free." },
+      { question: "Is the plan really free?", answer: "Yes. The call and the plan are completely free." },
       {
-        question: "Do I have to hire you after?",
-        answer: "No. The plan is yours, use it with anyone you like.",
+        question: "Do I have to work with you after?",
+        answer: "No. The plan is yours, use it yourself or with anyone you choose.",
       },
       {
-        question: "Who is it for?",
-        answer: "Business owners and managers who already spend on marketing and want to know what works.",
+        question: "Who is the plan for?",
+        answer: "Owners and managers who already spend on marketing and want to know what brings results.",
       },
       {
-        question: "What happens to my data?",
-        answer:
-          "We only use it to contact you about your diagnostic. Read our privacy note for the details.",
+        question: "What will my data be used for?",
+        answer: "Only to contact you about your plan. All the details are in the privacy policy.",
       },
     ],
   },
 
   formSection: {
-    eyebrow: "Book now",
-    title: "Get your free marketing diagnostic",
-    riskReversal: "Free, no obligation. We reply within one working day.",
+    eyebrow: "Start now",
+    title: "Tell us about your business",
+    riskReversal: "Free, no obligation. We contact you within one working day.",
   },
 
   form: {
@@ -158,7 +157,23 @@ export const diagnosticEn: DiagnosticPageContent = {
     serverError: "Something went wrong on our side. Please try again, or message us on WhatsApp.",
     next: "Next",
     back: "Back",
-    submit: "Book my free diagnostic",
+    submit: cta,
     sending: "Sending...",
+  },
+};
+
+// Illustrations of the English landing page (files in public/concept/).
+export const diagnosticEnImages = {
+  hero: {
+    src: "/concept/team-chat.webp",
+    width: 2472,
+    height: 1518,
+    alt: "Two Idea Agency team members discussing a plan on their laptops",
+  },
+  steps: {
+    src: "/concept/planning-chair.webp",
+    width: 2138,
+    height: 1584,
+    alt: "A business owner thinking about his marketing plan",
   },
 };

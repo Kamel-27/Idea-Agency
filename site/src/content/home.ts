@@ -13,41 +13,42 @@ export const homeContent: Record<Locale, HomeContent> = {
     meta: {
       title: "Idea Agency",
       description:
-        "A digital marketing and web agency. Clear strategy, data-driven decisions and content that connects.",
+        "Marketing plans, content and ads for your business, with the numbers tracked so you know where every pound goes.",
     },
     hero: {
       eyebrow: "Digital marketing agency",
-      titleLine1: "Turn Ideas Into",
-      titleLine2: "Real Growth",
+      titleLine1: "Clear marketing,",
+      titleLine2: "numbers you understand",
       description:
-        "We help brands grow online with clear strategy, data-driven decisions, and content that connects.",
-      primaryAction: { label: "Let's Talk", href: "/contact" },
+        "We create marketing plans, content and ads for your business, and track the numbers with you so you know where every pound goes.",
+      primaryAction: { label: "Tell us about your business", href: "/diagnostic" },
       secondaryAction: { label: "Our services", href: "#services" },
       screenText: ["Better Marketing", "Bigger Opportunities"],
     },
     services: {
       eyebrow: "What we do",
-      title: "From marketing strategy to measurable action",
+      title: "From the first plan to results you can measure",
       items: [
         {
-          title: "Marketing strategy",
-          description: "Research, audience, messaging and a 90-day plan, so every pound has a job.",
+          title: "Marketing plan",
+          description:
+            "We understand your market and customers, and set a clear goal with steps to follow, so every pound has a purpose.",
         },
         {
-          title: "Campaigns and content",
+          title: "Ads and content",
           description:
-            "Ads, content and tracking that show you what brings customers and what does not.",
+            "Ads and content in your customers' language, with tracking that shows what brings customers and what wastes money.",
         },
         {
           title: "Websites and landing pages",
-          description: "Fast, mobile-first sites built to turn visitors into leads.",
+          description: "Fast, mobile-first sites built to turn visitors into customers.",
         },
       ],
     },
     diagnosticCta: {
-      titleStart: "Not sure what is working? Get a",
-      titleHighlight: "free marketing diagnostic",
-      action: { label: "Book my free diagnostic", href: "/diagnostic" },
+      titleStart: "Not sure your marketing is on the right track? Get a",
+      titleHighlight: "free marketing plan",
+      action: { label: "Tell us about your business", href: "/diagnostic" },
     },
   },
 
@@ -56,42 +57,41 @@ export const homeContent: Record<Locale, HomeContent> = {
     meta: {
       title: "Idea Agency",
       description:
-        "بنساعدك تكبّر البيزنس بتاعك أونلاين بـ Strategy واضحة، وقرارات مبنية على الأرقام، و Content بيوصل للناس الصح.",
+        "بنعمل Plan تسويق و Content و Ads للبيزنس بتاعك، ونتابع الأرقام معاك عشان تعرف كل جنيه بيروح فين.",
     },
     hero: {
       eyebrow: "Digital Marketing Agency",
-      titleLine1: "حوّل فكرتك",
-      titleLine2: "لـ Growth حقيقي",
+      titleLine1: "تسويق واضح،",
+      titleLine2: "بأرقام تفهمها",
       description:
-        "بنساعدك تكبّر البيزنس بتاعك أونلاين بـ Strategy واضحة، وقرارات مبنية على الأرقام، و Content بيوصل للناس الصح.",
-      primaryAction: { label: "يلا نتكلم", href: "/ar/contact" },
+        "بنعمل Plan تسويق و Content و Ads للبيزنس بتاعك، ونتابع الأرقام معاك عشان تعرف كل جنيه بيروح فين.",
+      primaryAction: { label: "احكيلنا عن مشروعك", href: "/ar/diagnostic" },
       secondaryAction: { label: "شوف خدماتنا", href: "#services" },
       // Stays in English on purpose: part of the design, written in a handwriting font.
       screenText: ["Better Marketing", "Bigger Opportunities"],
     },
     services: {
       eyebrow: "بنعمل إيه",
-      title: "من الـ Strategy لحد نتيجة تقدر تقيسها",
+      title: "من أول Plan لحد نتيجة تقدر تقيسها",
       items: [
         {
-          title: "Marketing Strategy",
-          description:
-            "بنفهم السوق والجمهور بتاعك، ونطلعلك رسالة واضحة وخطة 90 يوم، عشان كل فلوس بتصرفها يبقى ليها هدف.",
+          title: "Plan تسويق",
+          description: "بنفهم السوق وعملاءك، ونرتبلك هدف واضح وخطوات تمشي عليها، عشان كل جنيه يبقى ليه هدف.",
         },
         {
-          title: "Ads و Content",
-          description: "إعلانات ومحتوى و Tracking يوضحلك إيه اللي بيجيب عملاء وإيه اللي بيضيع فلوس.",
+          title: "Ads و Content",
+          description: "إعلانات ومحتوى بلغة عملائك، مع Tracking يوضحلك إيه اللي بيجيب عملاء وإيه اللي بيضيع فلوس.",
         },
         {
-          title: "Websites و Landing Pages",
-          description: "مواقع سريعة ومعمولة للموبايل الأول، هدفها تحوّل الزوار لـ Leads.",
+          title: "Websites و Landing Pages",
+          description: "مواقع سريعة ومعمولة للموبايل الأول، هدفها تحوّل الزوار لعملاء.",
         },
       ],
     },
     diagnosticCta: {
-      titleStart: "مش عارف إيه اللي شغال في التسويق بتاعك؟ اعمل",
-      titleHighlight: "كشف تسويقي ببلاش",
-      action: { label: "عايز أعرف إيه اللي شغال", href: "/ar/diagnostic" },
+      titleStart: "مش متأكد إن التسويق بتاعك ماشي صح؟ خد",
+      titleHighlight: "خطة تسويق ببلاش",
+      action: { label: "احكيلنا عن مشروعك", href: "/ar/diagnostic" },
     },
   },
 };
