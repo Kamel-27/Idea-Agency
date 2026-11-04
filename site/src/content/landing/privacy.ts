@@ -19,7 +19,7 @@ export const privacyContent: Record<Locale, PrivacyContent> = {
     sections: [
       {
         heading: "What we collect",
-        body: "When you request the free marketing plan, we collect what you type in the form: your name, WhatsApp number, email, business name and your answers about your business. We also save which ad or link brought you to the page (UTM tags).",
+        body: "When you request the free marketing plan, we collect what you type in the form, including the first step if you do not finish it: your name, WhatsApp number, email, business name and your answers about your business. We also save which ad or link brought you to the page (UTM tags).",
       },
       {
         heading: "Why we collect it",
@@ -50,7 +50,7 @@ export const privacyContent: Record<Locale, PrivacyContent> = {
     sections: [
       {
         heading: "البيانات اللي بنجمعها",
-        body: "لما تطلب خطة التسويق، بنحفظ البيانات اللي بتكتبها في الفورم: الاسم، رقم الواتساب، الإيميل، اسم البيزنس، وإجاباتك عن البيزنس. وكمان بنحفظ الإعلان أو الرابط اللي وصّلك للصفحة (UTM).",
+        body: "لما تطلب خطة التسويق، بنحفظ البيانات اللي بتكتبها في الفورم، حتى الخطوة الأولى لو ما كملتش: الاسم، رقم الواتساب، الإيميل، اسم البيزنس، وإجاباتك عن البيزنس. وكمان بنحفظ الإعلان أو الرابط اللي وصّلك للصفحة (UTM).",
       },
       {
         heading: "بنستخدمها في إيه",

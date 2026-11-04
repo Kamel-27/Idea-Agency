@@ -46,7 +46,7 @@ Row number for the update: `{{1.__ROW_NUMBER__}}`.
 - `next_action`: `{{if(parseNumber(1.`30`) = 1; "Day 5 last follow-up"; "Nurture: monthly tip")}}`
 - `next_action_date`: `{{if(parseNumber(1.`30`) = 1; formatDate(addDays(now; 3); "YYYY-MM-DD HH:mm"); emptystring)}}`
 
-**[4] Add a Row** in `Log`: timestamp, lead_id `{{1.`0`}}`, flow `B`, action `follow-up {{parseNumber(1.`30`) + 1}}`, details "Sent Day 2 email" or "Sent Day 5 email, moved to Nurture".
+**[4] Add a Row** in `Log`: timestamp, lead_id `{{1.`0`}}`, flow `B` (typed as text; the first build mapped it to an empty field by mistake), action `follow-up {{parseNumber(1.`30`) + 1}}`, details "Sent Day 2 email" or "Sent Day 5 email, moved to Nurture".
 
 ## How it was built
 
