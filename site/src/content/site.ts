@@ -15,6 +15,9 @@ export const siteConfig = {
   // Meta Pixel ID (public, it is visible in every page's code anyway).
   // Empty string = no Pixel.
   metaPixelId: "947265578217685",
+
+  // Google Analytics 4 Measurement ID (public too). Empty string = no GA4.
+  ga4Id: "G-FPQQEVCZ7V",
 };
 
 export const siteChrome: Record<Locale, SiteChrome> = {
