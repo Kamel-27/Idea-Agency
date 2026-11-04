@@ -254,24 +254,136 @@ function crmNextAction(status, created, now, rand) {
 
 // ---------------- Today tab ----------------
 
+// The Today tab is a work list you can edit. Change status, next_action,
+// next_action_date or owner there and onEdit() saves it to the Leads row.
+// It refreshes when the Sheet opens, and from the menu IDEA CRM > Refresh Today.
+const CRM_TODAY_COLUMNS = [
+  // [title on Today, column in Leads or a special value, width, editable]
+  ["lead_id", "lead_id", 95, false],
+  ["name", "name", 150, false],
+  ["business", "business", 160, false],
+  ["tier", "tier", 60, false],
+  ["score", "score", 55, false],
+  ["WhatsApp", "wa_link", 130, false],
+  ["phone", "phone", 130, false],
+  ["challenge", "challenge", 260, false],
+  ["status", "status", 140, true],
+  ["next_action", "next_action", 220, true],
+  ["next_action_date", "next_action_date", 140, true],
+  ["owner", "owner", 90, true],
+];
+const CRM_TODAY_FIRST_ROW = 4;
+
 function crmBuildToday(ss) {
   const sh = crmFreshSheet(ss, "Today", 1);
-  sh.getRange("A1").setValue("Today: leads that need action (due today, overdue, or needs review)");
-  sh.getRange("A1").setFontSize(14).setFontWeight("bold").setFontColor(CRM_COLORS.navy);
-  const headers = ["lead_id", "name", "phone", "business", "tier", "score", "status", "next_action", "due", "owner"];
-  sh.getRange(3, 1, 1, headers.length).setValues([headers]).setFontWeight("bold").setBackground(CRM_COLORS.navy).setFontColor("#ffffff");
-  sh.getRange("A4").setFormula(
-    '=IFERROR(SORT(FILTER({Leads!A2:A, Leads!C2:C, Leads!D2:D, Leads!F2:F, Leads!W2:W, Leads!V2:V, Leads!AA2:AA, Leads!AC2:AC, Leads!AD2:AD, Leads!AB2:AB}, ' +
-    'Leads!A2:A<>"", ((Leads!AD2:AD<>"")*(Leads!AD2:AD<=TODAY()+1)+(Leads!AA2:AA="Needs review"))>0, ' +
-    'Leads!AA2:AA<>"Won", Leads!AA2:AA<>"Lost", Leads!AA2:AA<>"Nurture"), 9, TRUE), "Nothing due today")'
-  );
-  sh.getRange("I4:I").setNumberFormat("yyyy-mm-dd hh:mm");
+  sh.getRange("A1").setValue("Today: leads to contact (due today, overdue, or needs review)")
+    .setFontSize(14).setFontWeight("bold").setFontColor(CRM_COLORS.navy);
+  sh.getRange("A2").setValue("Edit the yellow columns here: the change is saved in the Leads tab. Menu IDEA CRM > Refresh Today to update the list.")
+    .setFontColor(CRM_COLORS.slate);
+  const header = sh.getRange(3, 1, 1, CRM_TODAY_COLUMNS.length);
+  header.setValues([CRM_TODAY_COLUMNS.map((c) => c[0])]).setFontWeight("bold").setBackground(CRM_COLORS.navy).setFontColor("#ffffff");
+  CRM_TODAY_COLUMNS.forEach((c, i) => {
+    sh.setColumnWidth(i + 1, c[2]);
+    if (c[3]) sh.getRange(3, i + 1).setBackground(CRM_COLORS.amber).setFontColor(CRM_COLORS.navy);
+  });
   sh.setFrozenRows(3);
-  sh.setColumnWidths(1, 10, 130);
-  sh.setColumnWidth(8, 220);
-  const rule = (text, color) =>
-    SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo(text).setBackground(color).setRanges([sh.getRange("E4:E")]).build();
-  sh.setConditionalFormatRules([rule("Hot", "#FFE8B8"), rule("Warm", "#D6F3EF")]);
+  sh.setFrozenColumns(2);
+  refreshToday();
+}
+
+function refreshToday() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const sh = ss.getSheetByName("Today");
+  const leads = ss.getSheetByName("Leads");
+  if (!sh || !leads) return;
+
+  const values = leads.getDataRange().getValues();
+  const head = values[0];
+  const at = (name) => head.indexOf(name);
+  const endOfToday = new Date();
+  endOfToday.setHours(23, 59, 59, 999);
+  const closed = ["Won", "Lost", "Nurture"];
+
+  const due = values.slice(1).filter((r) => {
+    if (!r[at("lead_id")] || closed.includes(r[at("status")])) return false;
+    if (r[at("status")] === "Needs review") return true;
+    const date = crmDate(r[at("next_action_date")]);
+    return date && date <= endOfToday;
+  });
+  due.sort((a, b) => (crmDate(a[at("next_action_date")]) || 0) - (crmDate(b[at("next_action_date")]) || 0));
+
+  const last = sh.getMaxRows();
+  if (last >= CRM_TODAY_FIRST_ROW) {
+    const old = sh.getRange(CRM_TODAY_FIRST_ROW, 1, last - CRM_TODAY_FIRST_ROW + 1, CRM_TODAY_COLUMNS.length);
+    old.clearContent().clearDataValidations().setBackground(null);
+  }
+  if (due.length === 0) {
+    sh.getRange(CRM_TODAY_FIRST_ROW, 1).setValue("Nothing due today");
+    return;
+  }
+
+  const rows = due.map((r) =>
+    CRM_TODAY_COLUMNS.map(([, source]) => {
+      const value = r[at(source)];
+      if (source === "wa_link") {
+        return String(value).indexOf("https://wa.me/") === 0 ? '=HYPERLINK("' + value + '","Open WhatsApp")' : "No opt-in: email only";
+      }
+      if (source === "phone") return "'" + String(value).replace(/^'/, "");
+      return value;
+    }),
+  );
+  const range = sh.getRange(CRM_TODAY_FIRST_ROW, 1, rows.length, CRM_TODAY_COLUMNS.length);
+  range.setValues(rows);
+
+  const col = (title) => CRM_TODAY_COLUMNS.findIndex((c) => c[0] === title) + 1;
+  const statusRule = SpreadsheetApp.newDataValidation().requireValueInList(CRM_STAGES, true).setAllowInvalid(false).build();
+  sh.getRange(CRM_TODAY_FIRST_ROW, col("status"), rows.length, 1).setDataValidation(statusRule);
+  sh.getRange(CRM_TODAY_FIRST_ROW, col("next_action_date"), rows.length, 1).setNumberFormat("yyyy-mm-dd hh:mm");
+  CRM_TODAY_COLUMNS.forEach((c, i) => {
+    if (c[3]) sh.getRange(CRM_TODAY_FIRST_ROW, i + 1, rows.length, 1).setBackground("#FFF8E6");
+  });
+  const tier = sh.getRange(CRM_TODAY_FIRST_ROW, col("tier"), rows.length, 1);
+  sh.setConditionalFormatRules([
+    SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo("Hot").setBackground("#FFE8B8").setBold(true).setRanges([tier]).build(),
+    SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo("Warm").setBackground("#D6F3EF").setRanges([tier]).build(),
+  ]);
+}
+
+/** Simple trigger: an edit in a yellow Today column is copied to the same lead in Leads. */
+function onEdit(e) {
+  const sh = e.range.getSheet();
+  if (sh.getName() !== "Today" || e.range.getRow() < CRM_TODAY_FIRST_ROW || e.range.getNumRows() > 1 || e.range.getNumColumns() > 1) return;
+  const column = CRM_TODAY_COLUMNS[e.range.getColumn() - 1];
+  if (!column || !column[3]) return;
+
+  const leadId = sh.getRange(e.range.getRow(), 1).getValue();
+  const leads = e.source.getSheetByName("Leads");
+  const head = leads.getRange(1, 1, 1, leads.getLastColumn()).getValues()[0];
+  const ids = leads.getRange(2, 1, Math.max(leads.getLastRow() - 1, 1), 1).getValues();
+  const index = ids.findIndex((r) => r[0] === leadId);
+  if (!leadId || index < 0) return;
+
+  leads.getRange(index + 2, head.indexOf(column[1]) + 1).setValue(e.range.getValue());
+  e.range.setBackground("#D6F3EF"); // green: saved in Leads
+}
+
+/** Simple trigger: adds the IDEA CRM menu and refreshes Today when the Sheet opens. */
+function onOpen() {
+  SpreadsheetApp.getUi()
+    .createMenu("IDEA CRM")
+    .addItem("Refresh Today", "refreshToday")
+    .addItem("Rebuild Today + Dashboard", "buildCrmViews")
+    .addItem("Tidy the Leads tab", "tidyLeadsTab")
+    .addItem("Show all Leads columns", "showAllLeadColumns")
+    .addToUi();
+  refreshToday();
+}
+
+function crmDate(value) {
+  if (value instanceof Date) return value;
+  if (!value) return null;
+  const date = new Date(String(value).replace(" ", "T"));
+  return isNaN(date) ? null : date;
 }
 
 // ---------------- Dashboard ----------------

@@ -53,3 +53,10 @@ Add it as a second file in the same Apps Script project, then run **resetCrmWith
 Afterwards, in Make: **Data stores → Idea leads index → delete all records**, so old test phones are not treated as duplicates.
 
 To rebuild only Today and Dashboard (no data change), run **buildCrmViews**.
+
+## Working in the Today tab
+
+Today lists the leads to contact: due today, overdue, or Needs review. Each row has an **Open WhatsApp** link.
+Edit the yellow columns (status dropdown, next_action, next_action_date, owner) right there: the cell turns
+green and the change is saved in the Leads tab. The list refreshes when the Sheet opens, or from the menu
+**IDEA CRM > Refresh Today**.
