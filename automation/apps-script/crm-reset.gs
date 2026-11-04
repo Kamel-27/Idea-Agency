@@ -67,9 +67,54 @@ function resetCrmWithSampleData() {
 
 function buildCrmViews() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
+  tidyLeadsTab();
   crmBuildToday(ss);
   crmBuildDashboard(ss);
 }
+
+/**
+ * Makes the Leads tab easy to work in, without moving any column (Make writes
+ * some columns by position, so the order must stay). Run it alone any time.
+ *   - hides the technical columns (UTM details, answers, AI reply...)
+ *   - freezes lead_id, created_at and name on the left
+ *   - status is a dropdown, with a color per stage; tier has a color too
+ * To see everything again, run showAllLeadColumns.
+ */
+function tidyLeadsTab() {
+  const sh = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Leads");
+  showAllLeadColumns();
+  CRM_HIDDEN_COLUMNS.forEach((name) => {
+    const col = CRM_LEADS_HEADERS.indexOf(name) + 1;
+    if (col > 0) sh.hideColumns(col);
+  });
+  sh.setFrozenRows(1);
+  sh.setFrozenColumns(3);
+  sh.getRange(1, 1, 1, CRM_LEADS_HEADERS.length).setBackground(CRM_COLORS.navy).setFontColor("#ffffff").setFontWeight("bold");
+  crmStatusDropdown(sh);
+
+  const col = (name) => CRM_LEADS_HEADERS.indexOf(name) + 1;
+  const status = sh.getRange(2, col("status"), sh.getMaxRows() - 1, 1);
+  const tier = sh.getRange(2, col("tier"), sh.getMaxRows() - 1, 1);
+  const colors = {
+    New: "#FFE8B8", Contacted: "#FFF4DB", Engaged: "#D6F3EF", "Call Booked": "#B8EBE4", "Plan Delivered": "#9FE0D6",
+    "Proposal Sent": "#C9D3EA", Won: "#FFB020", Lost: "#E2E2E2", Nurture: "#EDE7DB", "Needs review": "#F8C9C4",
+  };
+  const rules = Object.keys(colors).map((s) =>
+    SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo(s).setBackground(colors[s]).setRanges([status]).build());
+  rules.push(SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo("Hot").setBackground("#FFE8B8").setBold(true).setRanges([tier]).build());
+  rules.push(SpreadsheetApp.newConditionalFormatRule().whenTextEqualTo("Warm").setBackground("#D6F3EF").setRanges([tier]).build());
+  sh.setConditionalFormatRules(rules);
+}
+
+function showAllLeadColumns() {
+  const sh = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Leads");
+  sh.showColumns(1, CRM_LEADS_HEADERS.length);
+}
+
+const CRM_HIDDEN_COLUMNS = [
+  "email", "industry", "role", "team_size", "spend", "timeline", "opt_in", "locale", "page",
+  "utm_medium", "utm_campaign", "utm_content", "rule_score", "ai_rating", "ai_reply", "touch_count", "last_contact", "is_simulated",
+];
 
 // ---------------- Sample data ----------------
 
