@@ -40,3 +40,16 @@ Open the landing page, fill step 1 and click Next. Within a few seconds a `parti
 ## If you change the code later
 
 Save, then **Deploy → Manage deployments → Edit → Version: New version → Deploy**. The URL stays the same.
+
+# CRM reset, Today tab and Dashboard (`crm-reset.gs`)
+
+Add it as a second file in the same Apps Script project, then run **resetCrmWithSampleData** once:
+
+1. Saves a full backup copy of the Sheet in your Google Drive.
+2. Clears the rows of Leads, Log, Errors and Inbox (headers stay).
+3. Adds 52 sample leads over the last 4 weeks (`is_simulated` = TRUE). Their emails are the agency Gmail with `+sim01`...`+sim52`, so any follow-up email lands in the agency inbox.
+4. Builds the **Today** tab (leads due today, overdue or needing review) and the **Dashboard** tab (KPIs, source, tier, pipeline, weekly trend, form completion, 4 charts). Both update live from the Leads tab.
+
+Afterwards, in Make: **Data stores → Idea leads index → delete all records**, so old test phones are not treated as duplicates.
+
+To rebuild only Today and Dashboard (no data change), run **buildCrmViews**.
