@@ -160,6 +160,7 @@ function crmSampleLeads() {
   ];
   const lostReasons = ["No budget yet", "Chose another agency", "Not the right time", "No reply after the call"];
 
+  const owner = crmSetting("hot_owner") || "Kamel";
   const now = new Date();
   const rows = [];
   const usedPhones = {};
@@ -197,7 +198,7 @@ function crmSampleLeads() {
     const age = (now - created) / 864e5;
     const status = spam ? "Needs review" : crmStatus(tier, age, rand, weighted);
     const plan = crmNextAction(status, created, now, rand);
-    const owner = tier === "Hot" || CRM_BOOKED_PLUS.includes(status) ? weighted([["Kamel", 1], ["Aya", 1]]) : "";
+    const leadOwner = tier === "Hot" || CRM_BOOKED_PLUS.includes(status) ? owner : "";
     const touches = status === "Needs review" ? 0 : status === "Contacted" ? (age >= 2 ? 2 : 1) : status === "Nurture" ? 3 : 2;
     const lastContact = status === "Needs review" ? "" : new Date(created.getTime() + Math.min(age, 5) * 0.8 * 864e5);
     const leadId = "IDEA-" + String(i + 1).padStart(4, "0");
@@ -210,7 +211,7 @@ function crmSampleLeads() {
       spam ? "Looks like a test or spam, check before replying." :
         crmLabel(role) + " of a " + team + " person " + industry.replace("_", " ") + " business, spend " + spend.replace("_", " ") + ", wants to start " + timeline.replace(/_/g, " ") + ".",
       "(sample data)", optIn ? "https://wa.me/" + phone.slice(1) : "No opt-in: email only",
-      status, owner, plan.action, plan.date, touches, lastContact,
+      status, leadOwner, plan.action, plan.date, touches, lastContact,
       status === "Lost" ? pick(lostReasons) : "", true,
     ]);
   }
@@ -503,6 +504,14 @@ function crmStatusDropdown(leads) {
 function crmHeader(sh, row, col, labels) {
   sh.getRange(row, col, 1, labels.length).setValues([labels])
     .setFontWeight("bold").setBackground(CRM_COLORS.navy).setFontColor("#ffffff");
+}
+
+/** A value from the Settings tab (key in column A, value in column B). */
+function crmSetting(key) {
+  const sh = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Settings");
+  if (!sh) return "";
+  const row = sh.getDataRange().getValues().find((r) => r[0] === key);
+  return row ? String(row[1]).trim() : "";
 }
 
 function crmPoints(value, table) {
