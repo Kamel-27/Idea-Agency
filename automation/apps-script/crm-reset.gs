@@ -277,7 +277,7 @@ const CRM_TODAY_FIRST_ROW = 4;
 
 function crmBuildToday(ss) {
   const sh = crmFreshSheet(ss, "Today", 1);
-  sh.getRange("A1").setValue("Today: leads to contact (due today, overdue, or needs review)")
+  sh.getRange("A1").setValue("Today: leads to contact (new Hot leads, due today, overdue, or needs review)")
     .setFontSize(14).setFontWeight("bold").setFontColor(CRM_COLORS.navy);
   sh.getRange("A2").setValue("Edit the yellow columns here: the change is saved in the Leads tab. Menu IDEA CRM > Refresh Today to update the list.")
     .setFontColor(CRM_COLORS.slate);
@@ -308,6 +308,8 @@ function refreshToday() {
   const due = values.slice(1).filter((r) => {
     if (!r[at("lead_id")] || closed.includes(r[at("status")])) return false;
     if (r[at("status")] === "Needs review") return true;
+    // A new Hot lead is always on the list until someone moves it on (call within 2 hours).
+    if (r[at("tier")] === "Hot" && ["New", "Contacted", ""].includes(r[at("status")])) return true;
     const date = crmDate(r[at("next_action_date")]);
     return date && date <= endOfToday;
   });
@@ -373,10 +375,20 @@ function onOpen() {
   SpreadsheetApp.getUi()
     .createMenu("IDEA CRM")
     .addItem("Refresh Today", "refreshToday")
+    .addItem("Auto-refresh Today every 15 minutes", "setupTodayRefresh")
     .addItem("Rebuild Today + Dashboard", "buildCrmViews")
     .addItem("Tidy the Leads tab", "tidyLeadsTab")
     .addItem("Show all Leads columns", "showAllLeadColumns")
     .addToUi();
+  refreshToday();
+}
+
+/** Run once: refreshes the Today tab every 15 minutes, so new leads from Make appear by themselves. */
+function setupTodayRefresh() {
+  ScriptApp.getProjectTriggers()
+    .filter((t) => t.getHandlerFunction() === "refreshToday")
+    .forEach((t) => ScriptApp.deleteTrigger(t));
+  ScriptApp.newTrigger("refreshToday").timeBased().everyMinutes(15).create();
   refreshToday();
 }
 
