@@ -113,7 +113,7 @@ export const diagnosticAr: DiagnosticPageContent = {
       role: "دورك في البيزنس",
       team_size: "عدد الفريق",
       spend: "ميزانية التسويق الشهرية",
-      challenge: "إيه أكبر تحدي بتواجهه في التسويق؟",
+      challenge: "إيه أكبر تحدي بتواجهه في التسويق؟ (اختياري)",
       timeline: "إمتى حابب تبدأ؟",
       whatsapp_opt_in: "موافق إنكم تتواصلوا معايا على واتساب.",
     },

@@ -108,7 +108,7 @@ export const diagnosticEn: DiagnosticPageContent = {
       role: "Your role",
       team_size: "Team size",
       spend: "Monthly marketing spend",
-      challenge: "What is your biggest marketing challenge?",
+      challenge: "What is your biggest marketing challenge? (optional)",
       timeline: "When do you want to start?",
       whatsapp_opt_in: "Yes, you can contact me on WhatsApp.",
     },
