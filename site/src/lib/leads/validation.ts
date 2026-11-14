@@ -38,6 +38,9 @@ export const STEP_2_FIELDS: LeadField[] = [
   "timeline",
 ];
 
+/** Fields the visitor may leave empty (the mentor asked for a lighter form). */
+export const OPTIONAL_FIELDS: LeadField[] = ["challenge"];
+
 export const EMPTY_LEAD: LeadInput = {
   name: "",
   phone: "",
@@ -81,13 +84,11 @@ export function validateLead(lead: LeadInput, fields: LeadField[]): FieldErrors 
     if (typeof value !== "string") continue;
 
     if (value.trim() === "") {
-      errors[field] = "required";
+      if (!OPTIONAL_FIELDS.includes(field)) errors[field] = "required";
     } else if (field === "phone" && !normalizeEgyptianPhone(value)) {
       errors[field] = "invalid_phone";
     } else if (field === "email" && !EMAIL_PATTERN.test(value.trim())) {
       errors[field] = "invalid_email";
-    } else if (field === "challenge" && value.trim().length < 10) {
-      errors[field] = "too_short";
     } else if (CHOICES[field] && !CHOICES[field].includes(value)) {
       errors[field] = "invalid_choice";
     }
